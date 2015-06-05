@@ -49,7 +49,6 @@ L.Control.AdresseSok = L.Control.extend({
         }
     },
 
-
     _initLayout: function () {
         var className = 'leaflet-control-sok';
         this._container = L.DomUtil.create('div', className);
@@ -58,7 +57,7 @@ L.Control.AdresseSok = L.Control.extend({
 
         var div = L.DomUtil.create('div', 'input-group');
         this._input = L.DomUtil.create('input', 'form-control', div);
-        this._input.placeholder = 'Søk';
+        this._input.placeholder = 'Adressesøk..';
         this._input.type = 'text';
         var span = L.DomUtil.create('span', 'input-group-btn', div);
         var button = L.DomUtil.create('button', 'btn btn-default', span);
