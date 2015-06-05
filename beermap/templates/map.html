@@ -32,7 +32,8 @@
             L.tileLayer.kartverket('norges_grunnkart').addTo(map);
 
             var templates = {
-                breweries: _.template($('#brewery_template').html())
+                breweries: _.template($('#brewery_template').html()),
+                pol: _.template($('#pol_template').html())
             };
 
             var mappings = {
@@ -48,6 +49,16 @@
 
             var overlays;
             function showMap(item) {
+                $('.nav-sidebar-sub').children().each(function () {
+                    var el = $(this);
+                    var id = el.attr('id').replace('map_', '');
+                    if (id === item.id) {
+                        el.addClass('active');
+                    } else {
+                        el.removeClass('active');
+                    }
+                })
+
                 if (overlays) {
                     map.removeLayer(overlays);
                     overlays.off();
@@ -73,7 +84,7 @@
             }
 
             var maps = {{maps | safe }};
-            maps[0].active = true;
+
             var ul = $('<ul class="nav nav-sidebar nav-sidebar-sub"></ul>');
 
             var menuElemTemplate = _.template($('#menu_element_template').html());
@@ -84,10 +95,9 @@
                 });
                 return li;
             }));
-
+            $('#link_map').append(ul);
             showMap(maps[0]);
 
-            $('#link_map').append(ul);
 
         }());
     </script>
