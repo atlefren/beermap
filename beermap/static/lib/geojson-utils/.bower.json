@@ -1,0 +1,14 @@
+{
+  "name": "geojson-utils",
+  "homepage": "https://github.com/Esri/geojson-utils",
+  "_release": "4c9bc0e61e",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "4c9bc0e61ea23815f5148762f983ab3e3791addc"
+  },
+  "_source": "https://github.com/Esri/geojson-utils.git",
+  "_target": "*",
+  "_originalSource": "https://github.com/Esri/geojson-utils.git",
+  "_direct": true
+}

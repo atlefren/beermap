@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+    {% block css %}
+    {{super()}}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='lib/leaflet/dist/leaflet.css')}}">
+    {% endblock %}
+
+    {% block main %}
+    <div id="map" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 map">
+    </div>
+    {% endblock %}
+
+
+    {% block script %}
+    {{super()}}
+    <script type="text/javascript" src="{{ url_for('static', filename='lib/leaflet/dist/leaflet.js')}}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='lib/L.TileLayer.Kartverket/dist/L.TileLayer.Kartverket.min.js')}}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='lib/proj4/dist/proj4.js')}}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='lib/geojson-utils/src/jsonConverters.js')}}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/svvRoute.js')}}"></script>
+    <script type="text/javascript">
+
+        (function () {
+            'use strict';
+
+            var routing = SVVRoute('/route_proxy');
+            var map = L.map('map');
+            L.tileLayer.kartverket('norges_grunnkart').addTo(map);
+
+            var from = L.marker({{from_pos | safe}});
+            var to = L.geoJson({{to_feature | safe}}).getLayers()[0];
+
+            var layer = L.featureGroup([from, to]).addTo(map);
+            map.fitBounds(layer.getBounds());
+
+            console.log(to.feature.properties);
+
+            to.bindPopup("test").openPopup();
+
+            routing.getRoute(from.getLatLng(), to.getLatLng(), function (geoJson) {
+                L.geoJson(geoJson.features[0]).addTo(map);
+            });
+
+        }());
+    </script>
+    {% endblock %}

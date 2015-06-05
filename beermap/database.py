@@ -5,11 +5,27 @@ from haversine import haversine
 
 def get_data(filename):
     with open('data/' + filename) as file:
-        return file.read()
+        fc = json.loads(file.read())
+        for index, feature in enumerate(fc['features']):
+            feature['properties']['id'] = index + 1
+        return fc
 
-breweries = json.loads(get_data('breweries.geojson'))
-pol = json.loads(get_data('pol.geojson'))
-pubs = json.loads(get_data('pubs.geojson'))
+breweries = get_data('breweries.geojson')
+pol = get_data('pol.geojson')
+pubs = get_data('pubs.geojson')
+
+datasets = {
+    'breweries': breweries,
+    'pol': pol,
+    'pubs': pubs
+}
+
+
+def get_feature(dataset, id):
+    fc = datasets.get(dataset)
+    for feature in fc['features']:
+        if feature['properties']['id'] == id:
+            return feature
 
 
 def create_featurecollection(features):

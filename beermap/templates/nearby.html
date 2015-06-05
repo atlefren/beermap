@@ -28,15 +28,15 @@
             <div class="row">
                 <div class="col-md-4">
                     <h3>Puber</h3>
-                    <ul id="pubs" class="list-group"></ul>
+                    <div id="pubs" class="list-group"></div>
                 </div>
                 <div class="col-md-4">
                     <h3>Bryggerier</h3>
-                    <ul id="breweries" class="list-group"></ul>
+                    <div id="breweries" class="list-group"></div>
                 </div>
                 <div class="col-md-4">
                     <h3>Polutsalg</h3>
-                    <ul id="pol" class="list-group"></ul>
+                    <div id="pol" class="list-group"></div>
                 </div>
             </div>
         </div>
@@ -45,7 +45,7 @@
 
     {% block templates %}
         <script type="text/template" id="distance_element_template">
-        <li class="list-group-item"><%= name %> <span class="badge"><%= distance %>km</span></li>
+        <a href="/route?dataset=<%= dataset %>&id=<%= id %>&lat=<%= pos.lat %>&lon=<%= pos.lon %>" class="list-group-item"><%= name %> <span class="badge"><%= distance %>km</span></a>
         </script>
     {% endblock %}
 
@@ -53,34 +53,41 @@
         {{super()}}
         <script type="text/javascript">
 
-            function getAddresse(lat, lon, callback) {
-                var url = 'http://crossorigin.me/http://ws.geonorge.no/AdresseWS/adresse/radius?nord=' + lat +'&aust=' + lon + '&radius=0.1';
-                $.get(url, callback);
-            }
-
-            function getNearby(lat, lon, callback) {
-                var url = '/get_nearby?lat=' + lat +'&lon=' + lon;
-                $.get(url, callback);
-            }
-
-            var template = _.template($('#distance_element_template').html());
-
-            function getMapper(nameProp) {
-                return function (item) {
-                    return template({
-                        name: item.properties[nameProp],
-                        distance: item.properties.distance.toFixed(2)
-                    });
-                };
-            }
-
             (function () {
                 'use strict';
 
+                var pos;
+
+                function getAddresse(lat, lon, callback) {
+                    var url = 'http://crossorigin.me/http://ws.geonorge.no/AdresseWS/adresse/radius?nord=' + lat +'&aust=' + lon + '&radius=0.1';
+                    $.get(url, callback);
+                }
+
+                function getNearby(lat, lon, callback) {
+                    pos = {lat: lat, lon: lon};
+                    var url = '/get_nearby?lat=' + lat +'&lon=' + lon;
+                    $.get(url, callback);
+                }
+
+                var template = _.template($('#distance_element_template').html());
+
+
+                function getMapper(dataset, nameProp) {
+                    return function (item) {
+                        return template({
+                            name: item.properties[nameProp],
+                            distance: item.properties.distance.toFixed(2),
+                            dataset: dataset,
+                            id: item.properties.id,
+                            pos: pos
+                        });
+                    };
+                }
+
                 var types = {
-                    pol: getMapper('Butikknavn'),
-                    pubs: getMapper('name'),
-                    breweries: getMapper('name'),
+                    pol: getMapper('pol', 'Butikknavn'),
+                    pubs: getMapper('pubs', 'name'),
+                    breweries: getMapper('breweries', 'name'),
                 };
 
                 function showNearby(addr, lat, lon) {
