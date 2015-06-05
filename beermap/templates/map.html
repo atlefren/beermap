@@ -25,79 +25,96 @@
     <script type="text/javascript" src="{{ url_for('static', filename='lib/leaflet.markercluster/dist/leaflet.markercluster.js')}}"></script>
 
     <script type="text/javascript">
+
+        function getLocation(callback, err) {
+            $.get('http://ip-api.com/json', function (e) {
+                if (e.status === 'success') {
+                    callback([e.lat, e.lon], 9);
+                } else {
+                    err();
+                }
+            });
+        }
+
         (function () {
             'use strict';
 
-            var map = L.map('map').setView([65.5, 17.0], 4);
-            L.tileLayer.kartverket('norges_grunnkart').addTo(map);
+            getLocation(setup, function (){ setup([65.5, 17.0]); });
 
-            var templates = {
-                breweries: _.template($('#brewery_template').html()),
-                pol: _.template($('#pol_template').html())
-            };
+            function setup(pos, zoom) {
+                zoom = zoom || 4;
 
-            var mappings = {
-                breweries: function (properties) {
-                    properties.link = '/breweries/' + encodeURIComponent(properties.name);
-                    return properties;
-                }
-            }
+                var map = L.map('map').setView(pos, zoom);
+                L.tileLayer.kartverket('norges_grunnkart').addTo(map);
 
-            var defaults = {
-                breweries: {website: null, address: null, street: null, comment: null}
-            };
+                var templates = {
+                    breweries: _.template($('#brewery_template').html()),
+                    pol: _.template($('#pol_template').html())
+                };
 
-            var overlays;
-            function showMap(item) {
-                $('.nav-sidebar-sub').children().each(function () {
-                    var el = $(this);
-                    var id = el.attr('id').replace('map_', '');
-                    if (id === item.id) {
-                        el.addClass('active');
-                    } else {
-                        el.removeClass('active');
+                var mappings = {
+                    breweries: function (properties) {
+                        properties.link = '/breweries/' + encodeURIComponent(properties.name);
+                        return properties;
                     }
-                })
-
-                if (overlays) {
-                    map.removeLayer(overlays);
-                    overlays.off();
                 }
-                var template = templates[item.id];
-                var defaultProps = defaults[item.id] || {};
-                var mapping = mappings[item.id] || function (a) {return a};
-                var data = L.geoJson(item.data, {
-                     onEachFeature: function (feature, layer) {
-                        layer.bindPopup(template(_.extend(
-                            {},
-                            defaultProps,
-                            mapping(feature.properties)
-                        )));
+
+                var defaults = {
+                    breweries: {website: null, address: null, street: null, comment: null}
+                };
+
+                var overlays;
+                function showMap(item) {
+                    $('.nav-sidebar-sub').children().each(function () {
+                        var el = $(this);
+                        var id = el.attr('id').replace('map_', '');
+                        if (id === item.id) {
+                            el.addClass('active');
+                        } else {
+                            el.removeClass('active');
+                        }
+                    })
+
+                    if (overlays) {
+                        map.removeLayer(overlays);
+                        overlays.off();
                     }
-                });
-                overlays = new L.MarkerClusterGroup()
-                    .addLayers(data.getLayers())
-                    .addTo(map);
-                overlays.on('click', function (a) {
-                    a.layer.openPopup();
-                });
+                    var template = templates[item.id];
+                    var defaultProps = defaults[item.id] || {};
+                    var mapping = mappings[item.id] || function (a) {return a};
+                    var data = L.geoJson(item.data, {
+                         onEachFeature: function (feature, layer) {
+                            layer.bindPopup(template(_.extend(
+                                {},
+                                defaultProps,
+                                mapping(feature.properties)
+                            )));
+                        }
+                    });
+                    overlays = new L.MarkerClusterGroup()
+                        .addLayers(data.getLayers())
+                        .addTo(map);
+                    overlays.on('click', function (a) {
+                        a.layer.openPopup();
+                    });
+                }
+
+                var maps = {{maps | safe }};
+
+                var ul = $('<ul class="nav nav-sidebar nav-sidebar-sub"></ul>');
+
+                var menuElemTemplate = _.template($('#menu_element_template').html());
+                ul.append(_.map(maps, function (item) {
+                    var li =  $(menuElemTemplate(item));
+                    li.on('click', function () {
+                        showMap(item);
+                    });
+                    return li;
+                }));
+                $('#link_map').append(ul);
+                showMap(maps[0]);
+
             }
-
-            var maps = {{maps | safe }};
-
-            var ul = $('<ul class="nav nav-sidebar nav-sidebar-sub"></ul>');
-
-            var menuElemTemplate = _.template($('#menu_element_template').html());
-            ul.append(_.map(maps, function (item) {
-                var li =  $(menuElemTemplate(item));
-                li.on('click', function () {
-                    showMap(item);
-                });
-                return li;
-            }));
-            $('#link_map').append(ul);
-            showMap(maps[0]);
-
 
         }());
     </script>
