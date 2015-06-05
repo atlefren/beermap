@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+    {% block main %}
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
+        <h1>Ølkart</h1>
+
+        <p>Ølkart er en webside som gir deg stedfestet, ølrelatert informasjon.</p>
+        <ul>
+            <li>Hvor er nærmeste bar?</li>
+            <li>Hvor finner jeg nærmeste vinmonopol?</li>
+            <li>Hvilket bryggeri er mest kortreist der jeg er nå?</li>
+        </ul>
+        <p>Alle disse spørsmålene kan denne appen besvare!</p>
+
+        <h2>Datakilder</h2>
+        <p>Alle datene og tjenestene brukt i denne appen er åpne og gratis tilgjengelige:</p>
+        <ul>
+            <li>Bryggeridata er hentet fra <a href="https://github.com/atlefren/norwegian-breweries" target="_blank">https://github.com/atlefren/norwegian-breweries</a></li>
+            <li>Pol-lokasjonene er hentet fra <a href="http://www.vinmonopolet.no/butikker" target="_blank">Vinmonopolets nettsider</a></li>
+            <li>Pub-oversikten kommer fra <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a></li>
+            <li>Bakgrunnskart og adressesøk fra <a href="http://kartverket.no/">Kartverket</a></li>
+            <li>Ruteberegning fra <a href="http://data.norge.no/data/statens-vegvesen/api-ruteplantjeneste-bil" target="_blank">Statens Vegvesen</a></li>
+        </ul>
+
+        <h2>Utvikling / kode</h2>
+        <p>Denne appen er utviklet under <a href="" target="_blank">#hack4no 2015</a>, av <a href="http://www.atlefren.net/" target="_blank">Atle Frenvik Sveen</a>. Koden kommer på GitHub etterhvert.</p>
+
+    </div>
+    {% endblock %}

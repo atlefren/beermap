@@ -1,18 +1,18 @@
 # -*- coding: utf-8 -*-
 
 import json
-from flask import Flask, render_template, jsonify
-from flask import request
-from database import get_pubs, get_pol, get_breweries, get_nearby_db, get_feature
+from flask import Flask, render_template, jsonify, request, redirect, url_for
+from database import (get_pubs, get_pol, get_breweries, get_nearby_db,
+                      get_feature)
 import requests
 
 app = Flask(__name__)
 
 
 pages = [
-    {'endpoint': 'index', 'title': 'Hjem'},
     {'endpoint': 'nearby', 'title': u'I nærheten'},
     {'endpoint': 'map', 'title': 'Kart'},
+    {'endpoint': 'about', 'title': u'Om ølkart'},
 ]
 
 
@@ -25,7 +25,12 @@ name_attrs = {
 
 @app.route('/')
 def index():
-    return render_template('index.html', pages=pages)
+    return redirect(url_for('nearby'))
+
+
+@app.route('/about')
+def about():
+    return render_template('about.html', pages=pages)
 
 
 @app.route('/nearby')
