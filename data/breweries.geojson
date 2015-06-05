@@ -1,0 +1,2130 @@
+{
+    "type": "FeatureCollection", 
+    "features": [
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    5.322158, 
+                    60.413541, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://www.7fjellbryggeri.com/", 
+                "name": "7 Fjell Bryggeri",
+                "street": "Sandviksveien 62",
+                "address": "5035 Bergen"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    10.734849, 
+                    59.91354, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://www.amundsenbryggeri.no/", 
+                "name": "Amundsen Bryggeri & Spiseri", 
+                "street": "Stortingsgata 20", 
+                "address": "0161 Oslo"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    8.593588, 
+                    58.341772, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://www.apotekergaarden.no/", 
+                "name": "Apotekergaarden", 
+                "street": "Skolegaten 3", 
+                "address": "4876 Grimstad"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    8.718003, 
+                    58.464032, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://no.wikipedia.org/wiki/Arendals_Bryggeri", 
+                "name": "Arendals Bryggeri AS", 
+                "street": "Bryggeriveien 9", 
+                "address": "4848 Arendal"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    10.837014, 
+                    61.729202, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://atnaol.no/", 
+                "name": "Atna \u00d8l AS", 
+                "street": "Glopveien", 
+                "address": "2476 Atna"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    10.348198, 
+                    63.442366, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://austmann.no/", 
+                "name": "Austmann Bryggeri", 
+                "street": "Bynesveien 48", 
+                "address": "7018 Trondheim"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    6.807989, 
+                    61.185646, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://www.balderbrygg.no/", 
+                "name": "Balder Brygg AS", 
+                "street": "Riverdalen 5", 
+                "address": "6863 Leikanger"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    8.905974, 
+                    61.248606, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://www.beitostolen.com/wshowb.aspx?a=7424", 
+                "name": "Beito ysteri", 
+                "comment": "dairy with brewery",
+                "street": "Beitost\u00f8len (adress unkonwn, please advice)"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    5.31978, 
+                    60.390613, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "comment": "Assosiated with: Baran Caf\u00e9",
+                "website": "http://baranbryggeri.no/", 
+                "name": "Baran Bryggeri", 
+                "street": "Sigurds gate 21", 
+                "address": "5015 Bergen"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    6.004028, 
+                    58.457983, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://www.berentsens.no/", 
+                "name": "Berentsens Brygghus AS", 
+                "street": "Jernbaneveien 28", 
+                "address": "4370 Egersund"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    15.014234, 
+                    67.231867, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "https://nb-no.facebook.com/Bjornsbryggeri", 
+                "name": "Bj\u00f8rns Pub og Bryggeri", 
+                "comment": "Being established",
+                "street": "Lysthusveien 8,", 
+                "address": "8102 Skjerstad"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    11.113542, 
+                    59.291278, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://www.hansaborg.no/no/bryggerier/borgbryggeri/", 
+                "name": "Borg Bryggeri (Hansa Borg)", 
+                "street": "Per Gyntveien 2-4", 
+                "address": "1709 Sarpsborg"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    16.126297, 
+                    69.32083, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://www.breiflabben.no/www.breiflabben.no/Forside.html", 
+                "name": "Breiflabben Brygghus", 
+                "comment": "Out of buisness",
+                "street": "Prinsensgate 6", 
+                "address": "8480 Andenes"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    18.040969, 
+                    69.606208, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://lorentzen-fisk.no/?page_id=4", 
+                "name": "BryggeBryggeriet", 
+                "street": "Klubbvegen 15", 
+                "address": "9118 Brensholmen"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    9.549832, 
+                    59.13962, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "https://www.facebook.com/BryggerhusetVeholt", 
+                "name": "Bryggerhuset Veholt", 
+                "street": "Voldsvegen 745", 
+                "address": "3739 Skien"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    14.447735, 
+                    67.273217, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://baadin.com/", 
+                "name": "B\u00e5din", 
+                "street": "Notveien 3,", 
+                "address": "8013 Bod\u00f8"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    7.086697, 
+                    62.627456, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "name": "Baatbryggeriet", 
+                "comment": "out of business 2007",
+                "street": "6390, Vestnes"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    8.594247, 
+                    58.342561, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://www.cafeibsen.no/", 
+                "name": "Cafe Ibsen", 
+                "street": "L\u00f8kkestredet 7, ", 
+                "address": "4876 Grimstad"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    10.393458, 
+                    63.427434, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "name": "Cafe Ni Muser", 
+                "comment": "inactive - see To T\u00e5rn",
+                "street": "Bispegata 9", 
+                "address": "7012 Trondheim"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    9.64543, 
+                    59.664043, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://opsahlgarden.no/christian.html.v3/index.html", 
+                "name": "Christians Kjeller", 
+                "street": "Kirkegata 10", 
+                "address": "3616 Kongsberg"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    7.979188, 
+                    58.14802, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://www.hansaborg.no/cb", 
+                "name": "Christiansands bryggeri (Hansa Borg)", 
+                "street": "Setesdalsv. 17", 
+                "address": "4616 Kristiansand"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    7.994013, 
+                    58.144365, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://mat-uteliv.no/christiansand-brygghus", 
+                "name": "Christianssand Brygghus", 
+                "street": "Tollbodgata 9", 
+                "address": "4611 Kristiansand"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    11.155069, 
+                    59.580833, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://www.coldboybrewery.com", 
+                "name": "Cold Boy Brewery", 
+                "comment": "brewing in England",
+                "street": "Volleneveien 15", 
+                "address": "1831 Askim"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    10.753481, 
+                    59.917172, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "https://www.facebook.com/pages/Crowbar-Bryggeri/517035538316194", 
+                "name": "Crowbar & Bryggeri", 
+                "street": "Torggata 32", 
+                "address": "0183 Oslo"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    10.39487, 
+                    63.422501, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://www.samfundet.no/informasjon/lokaler/daglighallen", 
+                "name": "Daglighallen", 
+                "street": "Elgeseter gate", 
+                "address": "7030 Trondheim"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    6.000831, 
+                    58.451059, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "name": "Dalane Brygghus", 
+                "comment": "Never start brewing"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    11.344843, 
+                    61.168018, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://detlillebryggeriet.no/", 
+                "name": "Det lille Bryggeri AS", 
+                "street": "Hovdmoen", 
+                "address": "2450 Rena"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    10.730619, 
+                    59.919428, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://www.kunstnerneshus.no/kunst/program/dronebrygg/", 
+                "name": "Dronebrygg", 
+                "street": "Wergelandsveien 17 (Kunstnerenes hus)", 
+                "address": "0167 Oslo"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    5.867503, 
+                    59.93085, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://www.donhaug.com/", 
+                "name": "D\u00f8nhaug Gjestegard", 
+                "phone": null, 
+                "comment": "Not a brewery, but arranges home brewing sessions where guests can participate and taste.", 
+                "street": "Kjerlandssido 49", 
+                "address": "5463 Uskedalen"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    10.42701, 
+                    63.440875, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://www.ringnes.no/omringnes/bryggerieroganlegg/sider/ecdahls.aspx", 
+                "name": "E C Dahls Bryggeri (Ringnes)", 
+                "street": "Strandveien 71", 
+                "address": "7042 Trondheim"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    11.00931, 
+                    59.242547, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://www.ego-brygghus.com/", 
+                "name": "Ego Brygghus", 
+                "street": "Sulfatveien 10", 
+                "address": "1658 Torp"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    5.32721, 
+                    60.393708, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "https://nb-no.facebook.com/Ekangersmuget", 
+                "name": "Ekangersmuget (B\u00f8lgen & Moi)", 
+                "comment": "Contract brewers, permanent based at B&M for the moment (Autumn 2013)", 
+                "street": "V\u00e5gsallmenningen 16", 
+                "address": "5014 Bergen"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    6.658326, 
+                    60.32537, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://www.ekspedisjonen.net/", 
+                "name": "Ekspedisjoen sjenkestove", 
+                "address": "5781, Lofthus"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    8.551912, 
+                    60.863387, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://www.skogstadhotell.no", 
+                "name": "Elgen Mikrobryggeri", 
+                "street": "Hemsedal sentrum", 
+                "address": "3560 Hemsedal"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    15.034533, 
+                    67.962303, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": null, 
+                "name": "Engel\u00f8ya H\u00e5ndbryggeri", 
+                "street": "B\u00f8, Engel\u00f8ya", 
+                "address": "Steigen"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    9.45028, 
+                    61.471875, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://www.fjellbrygger.blogspot.no/", 
+                "name": "Espedalen Fjellbryggeri", 
+                "street": "Ruten fjellstue", 
+                "address": "2658 Espedalen"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    7.785959, 
+                    58.578478, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": null, 
+                "name": "Evje Mikrobryggeri", 
+                "street": "Bygg 26", 
+                "address": "4735 Evje"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    12.379446, 
+                    60.704398, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://www.finnskogenmikrobryggeri.no/", 
+                "name": "Finnskogen Mikrobryggeri", 
+                "address": "\u00c5snes"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    7.50716, 
+                    60.597788, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://finsehytta.turistforeningen.no/article.php?ar_id=30556&fo_id=5231", 
+                "name": "Finse 1223 Mikrobryggeri", 
+                "street": "Finsehytta DNT", 
+                "address": "5719"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    8.415363, 
+                    59.619939, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://www.facebook.com/pages/Fjellbryggeriet/341357317865", 
+                "name": "Fjellbryggeriet", 
+                "street": "R\u00f8njomsgrendi 6", 
+                "address": "3844 \u00c5motsdal"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    10.414889, 
+                    59.26905, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://faerdermikrobryggeri.com/", 
+                "name": "F\u00e6rder Mikrobrygeri", 
+                "comment": "being established", 
+                "street": "Tordenskjolds gate 5", 
+                "address": "T\u00f8nsberg"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    5.272424, 
+                    59.408826, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://garasjebryggeriet.no/", 
+                "name": "Garasjebryggeriet", 
+                "comment": "being established", 
+                "street": "Smedasundet 66", 
+                "address": "5528 Haugesund"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    11.430931, 
+                    59.414933, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": null, 
+                "name": "Gjerberg bryggeri", 
+                "address": "1890 Rakkestad", 
+                "comment": "Somewhat uncertain, beers probably not for regular sale but arranges tour with beer tasting. Capacity is 400 liter weekly for bottling. Three different types, top fermented."
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    10.241967, 
+                    59.129562, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://www.grans.no/", 
+                "name": "Grans Bryggeri AS", 
+                "street": "Hegnasletta 4", 
+                "address": "3217 Sandefjord"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    11.108465, 
+                    63.472541, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://www.visitstjordal.no/index.php?c=11&kat=Servering&tellusid=448243&lang=no", 
+                "name": "Gran\u00e5s G\u00e5rd (Skaarraadalen S\u00e5innhuslag)", 
+                "street": "Hegra", 
+                "address": "7520 Hegra, Stj\u00f8rdal"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    10.759375, 
+                    59.92508, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://brygghus.no/", 
+                "name": "Gr\u00fcnerl\u00f8kka Brygghus", 
+                "street": "Thorvald Meyers gate 30", 
+                "address": "0555 Oslo"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    6.043138, 
+                    62.342834, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": null, 
+                "name": "Grim & Gryt \u00d8kobryggeri A/S", 
+                "comment": "Being established", 
+                "street": "Hareid (unknown adress)", 
+                "address": null
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    5.398118, 
+                    61.363109, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://gulating.wordpress.com/gulating-bryggeri/", 
+                "name": "Gulating Bryggeri", 
+                "street": "(Fossen Bryggeripub) Fabrikkveien, Kaia", 
+                "address": "6963 Dale i Sunnfjord"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    11.387999, 
+                    59.120288, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "https://www.facebook.com/pages/Halden-Mikrobryggeri/398778806810612", 
+                "name": "Halden Mikrobryggeri", 
+                "street": "Borgergata", 
+                "address": "1767 Halden"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    5.325598, 
+                    60.388101, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://www.hph-bergen.no/", 
+                "name": "Hanne p\u00e5 H\u00f8yden", 
+                "street": "Fosswinckels gate 18", 
+                "address": "5007 Bergen"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    5.272424, 
+                    59.408826, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "name": "H\u00f8vleriet", 
+                "street": "Smedasundet 66", 
+                "address": "5528 Haugesund"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    5.257967, 
+                    60.293965, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://www.hansaborg.no/", 
+                "name": "Hansa Borg Bryggerier AS", 
+                "phone": null, 
+                "street": "Kokstaddalen 3", 
+                "address": "5257 Kokstad"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    13.629303, 
+                    66.22736, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "https://www.facebook.com/pages/Hemnes-Mikrobryggeri-As/437406366292616", 
+                "name": "Hemnes Mikrobryggeri AS", 
+                "street": "Idrettsvegen 41", 
+                "address": "8640 Hemnesberget"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    7.131625, 
+                    60.818459, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://hologardstun.no/", 
+                "name": "Holo Gardstun", 
+                "street": "Holo Gardstun", 
+                "address": "Fl\u00e5m"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    9.969835, 
+                    58.997323, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://www.holtens.no/", 
+                "name": "Holtens", 
+                "street": "Foldvik", 
+                "address": "Stavern"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    8.864239, 
+                    62.118373, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://hubertusbryggeri.no/", 
+                "name": "Hubertus bryggeri (Lesja Gjestgiveri)", 
+                "street": "Hubertus bryggeri / Lesja gjestgiveri", 
+                "address": "2665 Lesja"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    10.243468, 
+                    60.169964, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://brygghuset.blogspot.no/", 
+                "name": "H\u00f8nefoss Brygghus", 
+                "comment": "Not a brewery",
+                "street": "Soknedalsveien 7", 
+                "address": "3517 H\u00f8nefoss"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    10.18141, 
+                    59.739824, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://haandbryggeriet.net/", 
+                "name": "HaandBryggeriet AS", 
+                "phone": null, 
+                "street": "Skogliveien 4", 
+                "address": "3047 Drammen"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    11.187142, 
+                    63.867842, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://www.igb.no/", 
+                "name": "Inder\u00f8y G\u00e5rdsbryggeri", 
+                "street": "Kvamshaugan 46", 
+                "address": "7670 Inder\u00f8y"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    18.040924, 
+                    69.606211, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://lorentzen-fisk.no", 
+                "name": "Ivan Lorentzen Fiskeforretning AS", 
+                "street": "Klubbvegen 15", 
+                "address": "9118 Brensholmen"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    5.348581, 
+                    60.386597, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://www.kalfaretbrygghus.no/", 
+                "name": "Kalfaret Brygghus (Hansa Borg)", 
+                "comment": "Waldemars", 
+                "street": "Kalfarveien 76", 
+                "address": "5018 Bergen"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    5.031234, 
+                    61.599983, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "kinn.no", 
+                "name": "Kinn Bryggeri AS", 
+                "street": "Strandgata 28", 
+                "address": "6900 Flor\u00f8"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    10.605509, 
+                    63.574938, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://klostergardentautra.no/?Mode=Meny&HovedMenyId=104&InnholdMenyId=104", 
+                "name": "Klosterg\u00e5rden H\u00e5ndbryggeri", 
+                "street": "Klosterg\u00e5rden, 7633 Frosta", 
+                "address": "Tautra, Frosta"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    11.005598, 
+                    59.038198, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "https://www.facebook.com/pages/Kofoedbryggeriet/308423845867334", 
+                "name": "Kofoedbryggeriet", 
+                "street": "B\u00f8bakke", 
+                "address": "1680 Skj\u00e6rhalden"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    10.758374, 
+                    59.920036, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://kolonihagen.no", 
+                "name": "Kolonihagen Gr\u00fcnerl\u00f8kka", 
+                "street": "Korsgata", 
+                "address": "0551 Oslo"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    9.981098, 
+                    59.737822, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": null, 
+                "name": "Korvald S\u00f8ndre Mikrobryggeri", 
+                "street": "Korvaldveien 134", 
+                "address": "3050 Mj\u00f8ndalen"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    10.046997, 
+                    59.065978, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://www.larvikmikrobryggeri.no/", 
+                "name": "Larvik Mikrobryggeri", 
+                "street": "Nedre Fritz\u00f8egate 2", 
+                "address": "3285 Larvik"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    5.74657, 
+                    58.945716, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://lervig.no/", 
+                "name": "Lervig Aktiebryggeri AS", 
+                "street": "Vierveien 1", 
+                "address": "4016 Stavanger"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    10.310413, 
+                    63.402476, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://www.lianrestaurant.no/", 
+                "name": "Lian Restaurant", 
+                "street": "Lianvegen 36", 
+                "address": "7025 Trondheim"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    10.466643, 
+                    61.116871, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://www.lillehammerbryggeri.no/", 
+                "name": "Lillehammer Bryggeri AS", 
+                "street": "Elvegata 19", 
+                "address": "2609 Lillehammer"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    7.118797, 
+                    58.03996, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://www.lindesnesbrygghus.no/", 
+                "name": "Lindesnes Brygghus", 
+                "street": "Gahre N\u00e6ringspark", 
+                "address": "4521 Lindesnes"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    9.201858, 
+                    59.385031, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://olkompani.no/", 
+                "name": "Lindheim \u00d8lkompani", 
+                "phone": null, 
+                "org_desc": "Tinghaugvegen 101, 3810 Gvarv", 
+                "street": "Tinghaugvegen 101", 
+                "address": "3810 Gvarv"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    10.744985, 
+                    59.919407, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://littlebrothercraftbrewery.com/", 
+                "name": "Little Brother Brewery", 
+                "street": "Akersveien 19D", 
+                "address": "0177 Oslo"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    14.558097, 
+                    68.225012, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://www.lofotpils.no/", 
+                "name": "Lofotpils AS", 
+                "comment": "being established",
+                "street": "Vorset\u00f8y", 
+                "address": "8300 Svolv\u00e6r"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    18.950478, 
+                    69.645921, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "https://nb-no.facebook.com/ludwigmackbrygghus", 
+                "name": "Ludwig Mack Brygghus", 
+                "org_desc": "Storgata 4, 9008 Troms\u00f8", 
+                "street": "Storgata 4", 
+                "address": "9008 Troms\u00f8"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    9.966031, 
+                    61.5478, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://laagenbryggeri.no/", 
+                "name": "Laagen Bryggeri", 
+                "street": "Dale-Gudbrands Gard, Hundorpgeilen", 
+                "address": "2647 S\u00f8r-fron"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    10.286508, 
+                    59.893791, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://xn--lvebrygg-9za.no/", 
+                "name": "L\u00e5ven mikrobryggeri", 
+                "comment": "being established",
+                "street": "Modumveinen 27", 
+                "address": "Sylling, Buskerud"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    19.573027, 
+                    69.214658, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://www.mack.no/produkter/ol", 
+                "name": "Mack Bryggeri", 
+                "street": "Mack Bryggeri", 
+                "address": "Skogveien 25"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    14.761825, 
+                    67.51701, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://www.kjerringoy.info/index.php?id=40", 
+                "name": "Markens Gr\u00f8de", 
+                "address": "8093 Bod\u00f8"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    6.295509, 
+                    59.478394, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://www.molaks.no/", 
+                "name": "Mo Laksegard", 
+                "street": "Sandsbygda", 
+                "address": "4230 Sand"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    13.18684, 
+                    65.87329, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "name": "Mosj\u00f8en Mikrobryggeri", 
+                "street": "Rynes\u00e5sen 150", 
+                "address": "8665 Mosj\u00f8en"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    10.66808, 
+                    59.438498, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": null, 
+                "name": "M\u00f8llebyen Mikrobryggeri", 
+                "comment": "out of buisness 2009",
+                "street": "Fossen 21", 
+                "address": "1530 Moss"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    12.314909, 
+                    64.465425, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://www.namdalsbryggeriet.no/", 
+                "name": "Namdalsbryggeriet", 
+                "address": "Grong"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    25.97019, 
+                    70.982495, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": null, 
+                "name": "Nordkapp Mikrobryggeri", 
+                "comment": "out of business", 
+                "street": "Nordkappgata 1", 
+                "address": "9750 Honningsv\u00e5g, Norge"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    7.457865, 
+                    58.02517, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "https://www.facebook.com/pages/NUA-brygghus/1410996775782752", 
+                "name": "Nua Brygghus AS", 
+                "street": "Keiser Nicolaus gate 8", 
+                "address": "4515 Mandal"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    8.547808, 
+                    59.569833, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://www.nutheim.no/", 
+                "name": "Nutheim Gjestgiveri", 
+                "street": "3841, Seljord", 
+                "address": "http://www.nutheim.no/"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    10.764566, 
+                    59.950224, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://www.nydalenbryggeri.no/nydalen/", 
+                "name": "Nydalen Bryggeri og Spiseri", 
+                "street": "Nydalsveien 30A", 
+                "address": "0484 Oslo"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    8.637235, 
+                    58.405958, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://www.nogne-o.com/", 
+                "name": "N\u00f8gne \u00d8 - Det Kompromissl\u00f8se Bryggeri AS", 
+                "street": "Gamle Rygene Kraftstasjon Lunde", 
+                "address": "4885 Grimstad"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    10.951138, 
+                    59.196724, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://noisom.no/", 
+                "name": "N\u00f8isom Craft Beer", 
+                "street": "\u00d8raveien 2", 
+                "address": "1630 Fredrikstad"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    10.724363, 
+                    59.924402, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://www.omb.no/", 
+                "name": "Oslo Mikrobryggeri AS", 
+                "street": "Bogstadveien 6", 
+                "address": "0355 Oslo"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    7.457438, 
+                    58.028058, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "https://nb-no.facebook.com/provianten", 
+                "name": "Provianten Brygghus", 
+                "street": "Store Elvegate 45A", 
+                "address": "4514 Mandal"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    12.086268, 
+                    64.175012, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "name": "Qdulla",  
+                "street": "\u00d8stvik", 
+                "address": "7760 Sn\u00e5sa, Norway"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    9.937687, 
+                    63.574315, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://reinskloster.no/produkter/reins-kloster-ol/", 
+                "name": "Rein Drikke", 
+                "street": "Leira", 
+                "address": "7100 Rissa"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    10.296918, 
+                    61.320232, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://stavsplassen.no/ridehall/", 
+                "name": "Ridehallen", 
+                "comment": "Being established - name and place is uncertain", 
+                "street": "Stavsplassen - Kongsvegen", 
+                "address": "2635 Tretten"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    10.928513, 
+                    59.9922, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://www.ringnes.no", 
+                "name": "Ringnes Bryggeri AS", 
+                "street": "Bryggeriveien 2", 
+                "address": "1481 Hagan"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    11.386744, 
+                    62.576246, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://www.rorosbryggeri.no/", 
+                "name": "R\u00f8ros Bryggeri og Mineralvannsfabrikk", 
+                "street": "Kjerkgata 34", 
+                "address": "7374 R\u00f8ros"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    10.761601, 
+                    59.918758, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://www.facebook.com/Schouskjelleren", 
+                "name": "Schouskjelleren Mikrobryggeri", 
+                "street": "Trondheimsveien 2", 
+                "address": "0560 Oslo"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    10.224199, 
+                    59.130328, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://www.sandarbrygg.no/", 
+                "name": "Sandar Haandverksbryggeri", 
+                "street": "Torggata 4", 
+                "address": "3210 Sandefjord"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    5.741794, 
+                    58.851621, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://sandnes-brygge.no", 
+                "name": "Sandnes Brygge", 
+                "comment": "Being established",
+                "street": "Havnegata 15", 
+                "address": "4306 Sandnes"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    16.644721, 
+                    68.503452, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "name": "Skavli Brygghus", 
+                "comment": "Being established", 
+                "street": "Skavli G\u00e5rd", 
+                "address": "9440 Evenskjer"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    27.847595, 
+                    71.042755, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://www.slettnesbruk.no/", 
+                "name": "Slettnes Bruk", 
+                "comment": "Being established", 
+                "street": "Mehamn"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    6.474034, 
+                    60.692704, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://www.smalahovetunet.com/", 
+                "name": "Smalahovetunet Voss", 
+                "street": "Strandavegen 789", 
+                "address": "5710 Skulestadmo"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    9.552072, 
+                    60.82249, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "name": "Sm\u00e5 Vesen", 
+                "comment": "out of business 2010", 
+                "org_desc": "Bannkplassen, Bagn i Valdres<br>2930 Bagn", 
+                "street": "Bannkplassen, Bagn i Valdres", 
+                "address": "2930 Bagn"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    5.317576, 
+                    60.394243, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://www.spisekroken.no/", 
+                "name": "Spisekroken", 
+                "street": "Klostergaten 8", 
+                "address": "5005 Bergen"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    10.926932, 
+                    63.486594, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://www.hjelseng.no/Hjelseng/Stjrdalsbryggeriet.html", 
+                "name": "Stj\u00f8rdalsbryggeriet",
+                "comment": "Being established", 
+                "phone": "+47 916 85 552", 
+                "street": "Stokke G\u00e5rd", 
+                "address": "Stokkanvegen 42"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    9.098611, 
+                    62.693739, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://www.storligard.no/main/main.htm", 
+                "name": "Storli Gard", 
+                "street": "Storlidalen"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    11.169548, 
+                    60.14303, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://www.sundbytunet.no/", 
+                "name": "Sundbytunet AS", 
+                "street": "Gardermovegen 6", 
+                "address": "2050 Jessheim"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    15.65, 
+                    78.22, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://svalbardbryggeri.com/", 
+                "name": "Svalbard Bryggeri", 
+                "street": "Sj\u00f8omr\u00e5det", 
+                "address": "9170 Longyearbyen"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    12.037316, 
+                    63.334762, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://teveltunet.no", 
+                "name": "Teveltunet \u00d8lbryggeri", 
+                "street": "Teveltunet Fjellstue", 
+                "address": "7530 Mer\u00e5ker"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    17.759056, 
+                    68.479421, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://tinja.no/", 
+                "name": "Tinja Fjellg\u00e5rd", 
+                "street": "Kong Olavs vei", 
+                "address": "8517 Narvik"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    6.906796, 
+                    62.301653, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "https://www.facebook.com/tongabrygg/info", 
+                "name": "Tonga Gardsbrygger", 
+                "street": "Dale i Norddal", 
+                "address": "M\u00f8re og Romsdal"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    10.373969, 
+                    63.424468, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://www.facebook.com/totaarnbryggeri", 
+                "name": "To T\u00e5rn Bryggeri", 
+                "street": "Osloveien 45", 
+                "address": "7018 Trondheim"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    7.052193, 
+                    62.311805, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://www.finnfirma.no/infoside/trollbryggeriet-da/619752.html", 
+                "name": "Trollbryggeriet", 
+                "street": "Lied liabygda", 
+                "address": "6212 Liabygda"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    10.392264, 
+                    63.431259, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://tmb.no/", 
+                "name": "Trondhjem Mikrobryggeri AS", 
+                "street": "Prinsens Gate 39", 
+                "address": "7011 Trondheim"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    9.615589, 
+                    59.198707, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "name": "Union Bryggeri AS", 
+                "street": "Papirkaia 14", 
+                "address": "3732 Skien"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    9.058271, 
+                    61.121156, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://www.valdres.com/no/Produkt/?TLp=671378", 
+                "name": "Valdres Gardsbryggeri", 
+                "street": "Volbu, ", 
+                "address": "2940 Heggenes"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    7.967534, 
+                    58.264145, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": null, 
+                "name": "Vennd\u00f8la", 
+                "comment": "Being established",
+                "street": "Huns\u00f8ya", 
+                "address": "Vennesla"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    6.508492, 
+                    60.673448, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "https://www.facebook.com/pages/Voss-Bryggeri/185945174871713", 
+                "name": "Voss Bryggeri", 
+                "street": "Kytesvegen 396", 
+                "address": "5700 Voss"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    10.479004, 
+                    59.82609, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://www.wettrebryggeri.com/", 
+                "name": "Wettre Bryggeri AS", 
+                "comment": "Being established", 
+                "street": "L. P. Wettres Vei 20", 
+                "address": "1392 Vettre"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    9.301652, 
+                    58.890635, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": null, 
+                "name": "Wesselg\u00e5rden", 
+                "street": "Kilsveien 21", 
+                "address": "3766 Sannidal"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    7.116888, 
+                    60.863753, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://www.flamsbrygga.no/aegir-bryggeri/", 
+                "name": "\u00c6gir Bryggeri", 
+                "street": "Fl\u00e5msbrygga", 
+                "address": "5742 Fl\u00e5m"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    11.37703, 
+                    64.037665, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://www.drikkeglede.no/norske-bryggerier/oelve-paa-egge-bryggeri-article825-395.html", 
+                "name": "\u00d8lve p\u00e5 Egge Bryggeri", 
+                "street": "Vestre Elnan, S\u00f8r-beitstad", 
+                "address": "7724 Steinkjer"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    11.484894, 
+                    63.791784, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "https://www.facebook.com/orensmeieri", 
+                "name": "\u00d8rens Meieri", 
+                "comment": "Being established", 
+                "street": "Jernbanegata 11", 
+                "address": "7650 Verdals\u00f8ra"
+            }
+        }, 
+        {
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    10.211677, 
+                    59.741701, 
+                    0.0
+                ]
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "website": "http://www.aass.no/", 
+                "name": "Aass Bryggeri",  
+                "street": "Ole Steens gate 10", 
+                "address": "3015 Drammen"
+            }
+        }
+    ]
+}

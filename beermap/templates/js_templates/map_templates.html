@@ -1,0 +1,30 @@
+<script type="text/template" id="brewery_template">
+    <table>
+        <tr>
+            <th>Navn</th>
+            <td><%= name %></td>
+        </tr>
+        <% if (website) { %>
+        <tr>
+            <th>Webside</th>
+            <td><a href="<%= website %>" target="_blank"> <%= website %></a></td>
+        </tr>
+        <% } %>
+        <% if (comment) { %>
+        <tr>
+            <th>Kommentar</th>
+            <td><%= comment %></td>
+        </tr>
+        <% } %>
+        <tr>
+            <th>Adresse</th>
+            <td><%= street || '' %> <%= address || '' %></td>
+        </tr>
+    </table>
+
+    <a href="<%= link %>">Mer info</a>
+</script>
+
+<script type="text/template" id="menu_element_template">
+    <li <% if (active) { %>class="active"> <% } %><a href="#"><%= title %></a></li>
+</script>

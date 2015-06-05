@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+    {% block css %}
+    {{super()}}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='lib/leaflet/dist/leaflet.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='lib/leaflet.markercluster/dist/MarkerCluster.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='lib/leaflet.markercluster/dist/MarkerCluster.Default.css')}}">
+    {% endblock %}
+
+    {% block main %}
+    <div id="map" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 map">
+    </div>
+    {% endblock %}
+
+    {% block templates %}
+        {% include('js_templates/map_templates.html') %}
+    {% endblock %}
+
+
+    {% block script %}
+    <script type="text/javascript" src="{{ url_for('static', filename='lib/jquery/dist/jquery.js')}}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='lib/underscore/underscore-min.js')}}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='lib/leaflet/dist/leaflet.js')}}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='lib/L.TileLayer.Kartverket/dist/L.TileLayer.Kartverket.min.js')}}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='lib/leaflet.markercluster/dist/leaflet.markercluster.js')}}"></script>
+
+    <script type="text/javascript">
+        (function () {
+            'use strict';
+
+            var map = L.map('map').setView([65.5, 17.0], 4);
+            L.tileLayer.kartverket('norges_grunnkart').addTo(map);
+
+            var templates = {
+                breweries: _.template($('#brewery_template').html())
+            };
+
+            var mappings = {
+                breweries: function (properties) {
+                    properties.link = '/breweries/' + encodeURIComponent(properties.name);
+                    return properties;
+                }
+            }
+
+            var defaults = {
+                breweries: {website: null, address: null, street: null, comment: null}
+            };
+
+            var overlays;
+            function showMap(item) {
+                if (overlays) {
+                    map.removeLayer(overlays);
+                    overlays.off();
+                }
+                var template = templates[item.id];
+                var defaultProps = defaults[item.id] || {};
+                var mapping = mappings[item.id] || function (a) {return a};
+                var data = L.geoJson(item.data, {
+                     onEachFeature: function (feature, layer) {
+                        layer.bindPopup(template(_.extend(
+                            {},
+                            defaultProps,
+                            mapping(feature.properties)
+                        )));
+                    }
+                });
+                overlays = new L.MarkerClusterGroup()
+                    .addLayers(data.getLayers())
+                    .addTo(map);
+                overlays.on('click', function (a) {
+                    a.layer.openPopup();
+                });
+            }
+
+            var maps = {{maps | safe }};
+            maps[0].active = true;
+            var ul = $('<ul class="nav nav-sidebar nav-sidebar-sub"></ul>');
+
+            var menuElemTemplate = _.template($('#menu_element_template').html());
+            ul.append(_.map(maps, function (item) {
+                var li =  $(menuElemTemplate(item));
+                li.on('click', function () {
+                    showMap(item);
+                });
+                return li;
+            }));
+
+            showMap(maps[0]);
+
+            $('#link_map').append(ul);
+
+        }());
+    </script>
+    {% endblock %}
