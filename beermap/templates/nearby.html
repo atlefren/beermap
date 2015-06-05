@@ -12,11 +12,12 @@
             </div>
             <div class="col-md-4">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Søk etter adresse..">
+                    <input id="search" type="text" class="form-control" placeholder="Søk etter adresse..">
                     <span class="input-group-btn">
-                        <button class="btn btn-default" type="button">SØK</button>
+                        <button id="searchButton" class="btn btn-default" type="button">SØK</button>
                     </span>
                 </div>
+                <div id="search_results" class="list-group"></div>
             </div>
         </div>
         <div id="results" class="hidden">
@@ -93,16 +94,33 @@
                     });
                 }
 
+                $('#searchButton').on('click', function () {
+                    $('#results').addClass('hidden');
+                    var value = $('#search').val();
+                    var url = 'http://crossorigin.me/http://ws.geonorge.no/AdresseWS/adresse/sok?sokestreng=' + encodeURIComponent(value) + '&side=0';
+                    $.get(url, function (res) {
+                        res = JSON.parse(res);
+                            var res = _.map(res.adresser, function (adresse) {
+                                var value = adresse.kortadressenavn + ' ' + (adresse.husnr || '')  + ' ' + (adresse.bokstav || '');
+                                var li = $('<a href="#" class="list-group-item">' + value + '</li>');
+                                li.on('click', function () {
+                                    showNearby(value + ' ' + adresse.poststed, adresse.nord, adresse.aust);
+                                    $('#search_results').html('');
+                                });
+                                return li;
+                            }, this);
+                            $('#search_results').html(res);
+                    });
+                })
+
                 $('#geoloc').on('click', function () {
                     navigator.geolocation.getCurrentPosition(function (position) {
                         getAddresse(position.coords.latitude, position.coords.longitude, function (res) {
                             res = JSON.parse(res);
-                            console.log(res);
                             var adresse = res.adresser[0];
                             var addr = adresse.kortadressenavn + ' ' + (adresse.husnr || '')  + ' ' + (adresse.bokstav || '') + ' ' +adresse.poststed;
                             showNearby(addr, position.coords.latitude, position.coords.longitude)
                         });
-                        
                     });
                 });
 
