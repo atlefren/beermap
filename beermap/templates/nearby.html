@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+
+    {% block main %}
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
+        <h1>Øl i nærheten</h1>
+        <div class="row">
+            <div class="col-md-2">
+                <button id="geoloc" class="btn btn-primary" type="button">Finn min posisjon</button>
+            </div>
+            <div class="col-md-1">
+                eller
+            </div>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Søk etter adresse..">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">SØK</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div id="results" class="hidden">
+            <div>
+                <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+                <span id="place"></span>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <h3>Puber</h3>
+                    <ul id="pubs" class="list-group"></ul>
+                </div>
+                <div class="col-md-4">
+                    <h3>Bryggerier</h3>
+                    <ul id="breweries" class="list-group"></ul>
+                </div>
+                <div class="col-md-4">
+                    <h3>Polutsalg</h3>
+                    <ul id="pol" class="list-group"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+
+    {% block templates %}
+        <script type="text/template" id="distance_element_template">
+        <li class="list-group-item"><%= name %> <span class="badge"><%= distance %>km</span></li>
+        </script>
+    {% endblock %}
+
+    {% block script %}
+        {{super()}}
+        <script type="text/javascript">
+
+            function getAddresse(lat, lon, callback) {
+                var url = 'http://crossorigin.me/http://ws.geonorge.no/AdresseWS/adresse/radius?nord=' + lat +'&aust=' + lon + '&radius=0.1';
+                $.get(url, callback);
+            }
+
+            function getNearby(lat, lon, callback) {
+                var url = '/get_nearby?lat=' + lat +'&lon=' + lon;
+                $.get(url, callback);
+            }
+
+            var template = _.template($('#distance_element_template').html());
+
+            function getMapper(nameProp) {
+                return function (item) {
+                    return template({
+                        name: item.properties[nameProp],
+                        distance: item.properties.distance.toFixed(2)
+                    });
+                };
+            }
+
+            (function () {
+                'use strict';
+
+                var types = {
+                    pol: getMapper('Butikknavn'),
+                    pubs: getMapper('name'),
+                    breweries: getMapper('name'),
+                };
+
+                function showNearby(addr, lat, lon) {
+                    $('#results').removeClass('hidden');
+                    $('#place').html(addr);
+
+                    getNearby(lat, lon, function (res) {
+                        _.each(types, function (mapper, key) {
+                            $('#' + key).html(_.map(res[key].features, mapper));
+                        });
+                    });
+                }
+
+                $('#geoloc').on('click', function () {
+                    navigator.geolocation.getCurrentPosition(function (position) {
+                        getAddresse(position.coords.latitude, position.coords.longitude, function (res) {
+                            res = JSON.parse(res);
+                            console.log(res);
+                            var adresse = res.adresser[0];
+                            var addr = adresse.kortadressenavn + ' ' + (adresse.husnr || '')  + ' ' + (adresse.bokstav || '') + ' ' +adresse.poststed;
+                            showNearby(addr, position.coords.latitude, position.coords.longitude)
+                        });
+                        
+                    });
+                });
+
+            }());
+        </script>
+    {% endblock %}

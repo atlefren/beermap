@@ -27,8 +27,7 @@
 
 
     {% block script %}
-    <script type="text/javascript" src="{{ url_for('static', filename='lib/jquery/dist/jquery.js')}}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='lib/underscore/underscore-min.js')}}"></script>
+    {{super()}}
     <script type="text/javascript" src="{{ url_for('static', filename='lib/leaflet/dist/leaflet.js')}}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='lib/L.TileLayer.Kartverket/dist/L.TileLayer.Kartverket.min.js')}}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='lib/leaflet.markercluster/dist/leaflet.markercluster.js')}}"></script>

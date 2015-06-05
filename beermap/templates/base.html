@@ -71,6 +71,8 @@
     {% endblock %}
 
     {% block script %}
+    <script type="text/javascript" src="{{ url_for('static', filename='lib/jquery/dist/jquery.js')}}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='lib/underscore/underscore-min.js')}}"></script>
     {% endblock %}
 
   </body>
