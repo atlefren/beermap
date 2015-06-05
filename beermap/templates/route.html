@@ -3,11 +3,42 @@
     {% block css %}
     {{super()}}
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='lib/leaflet/dist/leaflet.css')}}">
+
+    <style type="text/css">
+        .leaflet-control-info {
+            background-color: #fff;
+            border-radius: 4px;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.65);
+            padding: 10px;
+        }
+
+        .route-table th {
+            padding-right: 5px; 
+        }
+
+    </style>
     {% endblock %}
 
     {% block main %}
     <div id="map" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 map">
     </div>
+    {% endblock %}
+
+
+    {% block templates %}
+        <script type="text/template" id="directions_template">
+            <h3>Ruteinformasjon</h3>
+            <table class="route-table">
+                <tr><th>Kjøretid</th><td><%= time %> Minutter</td></tr>
+                <tr><th>Avstand</th><td><%= distance %></td></tr>
+            </table>
+
+            <ul>
+            <% _.each(directions, function (direction) { %>
+                <li><%= direction.text %> (<%= direction.dist %>)</li>
+            <%})%>
+            </ul>
+        </script>
     {% endblock %}
 
 
@@ -20,8 +51,43 @@
     <script type="text/javascript" src="{{ url_for('static', filename='js/svvRoute.js')}}"></script>
     <script type="text/javascript">
 
+        L.Control.Info = L.Control.extend({
+
+            initialize: function (options) {
+                L.setOptions(this, options);
+            },
+
+            _initLayout: function () {
+                var className = 'leaflet-control-info';
+                this._container = L.DomUtil.create('div', className);
+                
+            },
+
+            setContent: function (content) {
+                this._container.innerHTML = content
+            },
+
+            onAdd: function (map) {
+                this._map = map;
+                this._initLayout();
+                return this._container;
+            }
+        });
+
+        function meterOrKm(meters) {
+            var km = meters / 1000;
+            if (km < 0.5) {
+                return meters.toFixed(0) + ' m';
+            }
+            return km.toFixed(2) + ' km';
+        }
+
         (function () {
             'use strict';
+
+            var dirTemplate = _.template($('#directions_template').html());
+
+            var nameAttr = '{{name_attr}}';
 
             var routing = SVVRoute('/route_proxy');
             var map = L.map('map');
@@ -33,14 +99,27 @@
             var layer = L.featureGroup([from, to]).addTo(map);
             map.fitBounds(layer.getBounds());
 
-            console.log(to.feature.properties);
+            var info = new L.Control.Info();
+            map.addControl(info);
 
-            to.bindPopup("test").openPopup();
+            to.bindPopup(to.feature.properties[nameAttr]).openPopup();
 
-            routing.getRoute(from.getLatLng(), to.getLatLng(), function (geoJson) {
-                L.geoJson(geoJson.features[0]).addTo(map);
+            routing.getRoute(from.getLatLng(), to.getLatLng(), function (geoJson, directions) {
+                var r = L.geoJson(geoJson.features[0]).addTo(map);
+
+                var properties = r.getLayers()[0].feature.properties;
+                var data = {
+                    distance: meterOrKm(properties.Total_Meters),
+                    time: properties.Total_Minutes.toFixed(2),
+                    directions: _.map(directions[0].features, function (direction) {
+                        return {
+                            dist: meterOrKm(direction.attributes.length * 1000),
+                            text: direction.attributes.text.replace(/ *{[^)]*} */g, '')
+                        };
+                    })
+                };
+                info.setContent(dirTemplate(data));
             });
-
         }());
     </script>
     {% endblock %}

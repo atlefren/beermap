@@ -41,7 +41,8 @@ var SVVRoute = function (BASE_URL) {
             stops: _getStops(from, to),
             returnDirections: true,
             returnGeometry: true,
-            format: 'json'
+            format: 'json',
+            lang: 'nb-NO'
         };
 
         var jsonconverter = esriConverter();
@@ -49,7 +50,7 @@ var SVVRoute = function (BASE_URL) {
             url: BASE_URL + '?' + _createQueryParameterString(params),
             type: 'GET',
             success: function (res) {
-                callback(_toLatLng(jsonconverter.toGeoJson(res.routes)));
+                callback(_toLatLng(jsonconverter.toGeoJson(res.routes)), res.directions);
             }
         });
     }

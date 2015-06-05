@@ -16,6 +16,13 @@ pages = [
 ]
 
 
+name_attrs = {
+    'pol': 'Butikknavn',
+    'pubs': 'name',
+    'breweries': 'name'
+}
+
+
 @app.route('/')
 def index():
     return render_template('index.html', pages=pages)
@@ -23,7 +30,11 @@ def index():
 
 @app.route('/nearby')
 def nearby():
-    return render_template('nearby.html', pages=pages)
+    return render_template(
+        'nearby.html',
+        pages=pages,
+        name_attrs=json.dumps(name_attrs)
+    )
 
 
 @app.route('/map')
@@ -42,9 +53,11 @@ def map():
 
 @app.route('/route_proxy')
 def route_proxy():
-    url  = 'https://www.vegvesen.no/ruteplan/routingservice_v1_0/routingService'
-    res = requests.get(url + '?' +request.query_string, auth=('TjeRuteplanDataut', 'l0adRun3R12'))
-    print res.json()
+    url = 'https://www.vegvesen.no/ruteplan/routingservice_v1_0/routingService'
+    res = requests.get(
+        url + '?' + request.query_string,
+        auth=('TjeRuteplanDataut', 'l0adRun3R12')
+    )
     return jsonify(res.json())
 
 
@@ -53,18 +66,22 @@ def route():
     lat = float(request.args.get('lat'))
     lon = float(request.args.get('lon'))
 
+    dataset = request.args.get('dataset')
     feature = get_feature(
-        request.args.get('dataset'),
+        dataset,
         int(request.args.get('id'))
     )
 
     from_pos = {'lat': lat, 'lon': lon}
 
+    name_attr = name_attrs.get(dataset, '')
+
     return render_template(
         'route.html',
         pages=pages,
         from_pos=json.dumps(from_pos),
-        to_feature=json.dumps(feature)
+        to_feature=json.dumps(feature),
+        name_attr=name_attr
     )
 
 
