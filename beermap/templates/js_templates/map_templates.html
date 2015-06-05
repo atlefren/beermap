@@ -1,4 +1,5 @@
 <script type="text/template" id="brewery_template">
+    <h3>Bryggeri</h3>
     <table>
         <tr>
             <th>Navn</th>
@@ -30,9 +31,37 @@
 </script>
 
 <script type="text/template" id="pol_template">
-    <%= Butikknavn %>
+    <h3>Polutsalg</h3>
+    <table>
+        <tr>
+            <th>Navn</th>
+            <td><%= Butikknavn %></td>
+        </tr>
+        <tr>
+            <th>Adresse</th>
+            <td><%= Gateadresse %>, <%= Gate_postnummer %> <%= Gate_poststed %></td>
+        </tr>
+        <tr>
+            <th>Kategori</th>
+            <td><%= Kategori %></td>
+        </tr>
+        <tr>
+            <th>Åpningstider</th>
+            <td>
+                <ul>
+                    <li>Mandager: <%= Apn_mandag %></li>
+                    <li>Tirsdager: <%= Apn_tirsdag %></li>
+                    <li>Onsdager: <%= Apn_onsdag %></li>
+                    <li>Torsdager: <%= Apn_torsdag %></li>
+                    <li>Fredager: <%= Apn_fredag %></li>
+                    <li>Lørdager: <%= Apn_lordag %></li>
+                </ul>
+            </td>
+        </tr>
+    </table>
 </script>
 
 <script type="text/template" id="pubs_template">
+    <h3>Pub</h3>
     <%= name %>
 </script>

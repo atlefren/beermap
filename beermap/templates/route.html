@@ -4,19 +4,6 @@
     {{super()}}
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='lib/leaflet/dist/leaflet.css')}}">
 
-    <style type="text/css">
-        .leaflet-control-info {
-            background-color: #fff;
-            border-radius: 4px;
-            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.65);
-            padding: 10px;
-        }
-
-        .route-table th {
-            padding-right: 5px; 
-        }
-
-    </style>
     {% endblock %}
 
     {% block main %}
@@ -49,30 +36,8 @@
     <script type="text/javascript" src="{{ url_for('static', filename='lib/proj4/dist/proj4.js')}}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='lib/geojson-utils/src/jsonConverters.js')}}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/svvRoute.js')}}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/L.Control.Info.js')}}"></script>
     <script type="text/javascript">
-
-        L.Control.Info = L.Control.extend({
-
-            initialize: function (options) {
-                L.setOptions(this, options);
-            },
-
-            _initLayout: function () {
-                var className = 'leaflet-control-info';
-                this._container = L.DomUtil.create('div', className);
-                
-            },
-
-            setContent: function (content) {
-                this._container.innerHTML = content
-            },
-
-            onAdd: function (map) {
-                this._map = map;
-                this._initLayout();
-                return this._container;
-            }
-        });
 
         function meterOrKm(meters) {
             var km = meters / 1000;
@@ -119,6 +84,7 @@
                     })
                 };
                 info.setContent(dirTemplate(data));
+                map.fitBounds(r.getBounds());
             });
         }());
     </script>

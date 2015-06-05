@@ -9,6 +9,8 @@ function BeerMap(layers, templates, mappings, defaults) {
 
     var map;
 
+    var info;
+
     function _toggleMenu(selectedItem) {
         $('.nav-sidebar-sub').children().each(function () {
             var el = $(this);
@@ -22,6 +24,7 @@ function BeerMap(layers, templates, mappings, defaults) {
     }
 
     function _showMap(item) {
+        info.hide();
         _toggleMenu(item);
 
         if (overlays) {
@@ -32,23 +35,21 @@ function BeerMap(layers, templates, mappings, defaults) {
         var template = templates[item.id];
         var defaultProps = defaults[item.id] || {};
         var mapping = mappings[item.id] || function (a) {return a; };
-        var data = L.geoJson(
-            item.data,
-            {
-                onEachFeature: function (feature, layer) {
-                    layer.bindPopup(template(_.extend(
-                        {},
-                        defaultProps,
-                        mapping(feature.properties)
-                    )));
-                }
-            }
-        );
+        var data = L.geoJson(item.data);
         overlays = new L.MarkerClusterGroup()
             .addLayers(data.getLayers())
             .addTo(map);
-        overlays.on('click', function (a) {
-            a.layer.openPopup();
+        overlays.on('click', function (e) {
+            console.log(e.layer.feature.properties)
+            info.setContent(
+                template(
+                    _.extend(
+                        {},
+                        defaultProps,
+                        mapping(e.layer.feature.properties)
+                    )
+                )
+            );
         });
     }
 
@@ -64,8 +65,12 @@ function BeerMap(layers, templates, mappings, defaults) {
         zoom = zoom || 4;
 
         map = L.map('map').setView(pos, zoom);
+
         L.tileLayer.kartverket('norges_grunnkart').addTo(map);
         L.control.adresseSok().addTo(map);
+
+        info = new L.Control.Info();
+        map.addControl(info);
 
         var ul = $('<ul class="nav nav-sidebar nav-sidebar-sub"></ul>');
 
