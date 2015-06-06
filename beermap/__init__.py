@@ -3,7 +3,7 @@
 import json
 from flask import Flask, render_template, jsonify, request, redirect, url_for
 from database import (get_pubs, get_pol, get_breweries, get_nearby_db,
-                      get_feature)
+                      get_feature, get_kommune_stats)
 import requests
 
 app = Flask(__name__)
@@ -17,7 +17,7 @@ pages = [
 
 
 name_attrs = {
-    'pol': 'Butikknavn',
+    'pol': 'butikknavn',
     'pubs': 'name',
     'breweries': 'name'
 }
@@ -97,6 +97,13 @@ def get_nearby():
     lon = float(request.args.get('lon'))
     a = get_nearby_db(lat, lon)
     return jsonify(a)
+
+
+@app.route('/stats')
+def stats():
+    kommuner = get_kommuner()
+    return ''
+
 
 if __name__ == '__main__':
     app.run(debug=True)

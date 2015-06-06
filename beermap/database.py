@@ -1,31 +1,27 @@
 # -*- coding: utf-8 -*-
 import json
-from haversine import haversine
+import psycopg2
+from psycopg2.extras import RealDictCursor
 
 
-def get_data(filename):
-    with open('data/' + filename) as file:
-        fc = json.loads(file.read())
-        for index, feature in enumerate(fc['features']):
-            feature['properties']['id'] = index + 1
-        return fc
+conn = psycopg2.connect('dbname=beer user=atlefren password=atlefren')
+conn.cursor_factory = RealDictCursor
 
-breweries = get_data('breweries.geojson')
-pol = get_data('pol.geojson')
-pubs = get_data('pubs.geojson')
 
-datasets = {
-    'breweries': breweries,
-    'pol': pol,
-    'pubs': pubs
+column_list = {
+    'pol': ['apn_tirsdag', 'apn_torsdag', 'butikknavn',
+            'kategori', 'gate_poststed', 'post_postnummer',
+            'gate_postnummer', 'apn_onsdag', 'apn_lordag',
+            'gateadresse', 'postadresse', 'post_poststed', 'apn_fredag',
+            'apn_mandag'],
+    'breweries': ['website', 'name', 'street', 'address',
+                  'comment', 'phone', 'org_desc'],
+    'pubs': ['name']
 }
 
 
-def get_feature(dataset, id):
-    fc = datasets.get(dataset)
-    for feature in fc['features']:
-        if feature['properties']['id'] == id:
-            return feature
+def get_kommune_stats():
+    return
 
 
 def create_featurecollection(features):
@@ -35,39 +31,92 @@ def create_featurecollection(features):
     }
 
 
-def get_pubs():
-    return pubs
+def parse_row(row):
+
+    geom = json.loads(row.pop('geom'))
+    return {
+        'type': 'Feature',
+        'geometry': geom,
+        'properties': row
+    }
 
 
-def get_pol():
-    return pol
+def get_feature(table, id):
+    cur = conn.cursor()
+
+    sql = '''
+        SELECT *, ST_AsGeoJSON(wkb_geometry) as geom, ogc_fid as id
+        FROM {0}
+        WHERE ogc_fid = {1:d}
+    '''.format(table, id)
+    cur.execute(sql)
+    d = parse_row(cur.fetchone())
+    cur.close()
+    return d
+
+
+def get_table(table, columns):
+    cur = conn.cursor()
+    sql = '''
+        SELECT {0}, ST_AsGeoJSON(wkb_geometry) as geom, ogc_fid as id FROM {1}
+    '''.format(', '.join(columns), table)
+    cur.execute(sql)
+    features = [parse_row(row) for row in cur.fetchall()]
+    cur.close()
+    return {
+        'type': 'FeatureCollection',
+        'features': features
+    }
+
+
+def get_data(table):
+    return get_table(table, column_list[table])
 
 
 def get_breweries():
-    return breweries
+    return get_data('breweries')
 
 
-def get_ten_closest(featurecollection, lat, lon):
-    pos = (lon, lat)
+def get_pol():
+    return get_data('pol')
 
-    for feature in featurecollection['features']:
-        p = (
-            feature['geometry']['coordinates'][0],
-            feature['geometry']['coordinates'][1]
-        )
-        feature['properties']['distance'] = haversine(pos, p)
 
-    return create_featurecollection(
-        sorted(
-            featurecollection['features'],
-            key=lambda k: k['properties']['distance']
-        )[:10]
-    )
+def get_pubs():
+    return get_data('pubs')
+
+
+def get_ten_closest(table, lat, lon):
+
+    columns = column_list[table]
+
+    cur = conn.cursor()
+    sql = '''
+        SELECT
+            {0},
+            ST_AsGeoJSON(wkb_geometry) as geom,
+            ST_Distance(st_setsrid(st_makepoint({1:f}, {2:f}), 4326)::geography,
+            wkb_geometry::geography) / 1000 as distance,
+            ogc_fid as id
+        FROM
+            {3}
+        ORDER BY
+            distance
+        LIMIT 10
+    '''.format(','.join(columns), lon, lat, table)
+
+    cur.execute(sql)
+
+    features = [parse_row(row) for row in cur.fetchall()]
+    cur.close()
+    return {
+        'type': 'FeatureCollection',
+        'features': features
+    }
 
 
 def get_nearby_db(lat, lon):
     return {
-        'pol': get_ten_closest(pol, lat, lon),
-        'pubs': get_ten_closest(pubs, lat, lon),
-        'breweries': get_ten_closest(breweries, lat, lon),
+        'pol': get_ten_closest('pol', lat, lon),
+        'pubs': get_ten_closest('pubs', lat, lon),
+        'breweries': get_ten_closest('breweries', lat, lon),
     }
