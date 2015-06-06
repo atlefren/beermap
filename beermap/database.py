@@ -16,7 +16,8 @@ column_list = {
             'apn_mandag'],
     'breweries': ['website', 'name', 'street', 'address',
                   'comment', 'phone', 'org_desc'],
-    'pubs': ['name']
+    'pubs': ['name'],
+    'hex': []
 }
 
 
@@ -53,9 +54,14 @@ def get_feature(table, id):
 
 def get_table(table, columns):
     cur = conn.cursor()
+    cols = ''
+    if len(columns):
+        cols = ', '.join(columns) + ','
     sql = '''
-        SELECT {0}, ST_AsGeoJSON(wkb_geometry) as geom, ogc_fid as id FROM {1}
-    '''.format(', '.join(columns), table)
+        SELECT {0} ST_AsGeoJSON(wkb_geometry) as geom, ogc_fid as id FROM {1}
+    '''.format(cols, table)
+
+    print sql
     cur.execute(sql)
     features = [parse_row(row) for row in cur.fetchall()]
     cur.close()
@@ -119,7 +125,6 @@ def group_by_kommune(table):
         GROUP BY kommuner.komm, kommuner.navn
         order by num DESC'''.format(table)
 
-    print sql
     cur.execute(sql)
 
     res = cur.fetchall()
@@ -127,11 +132,33 @@ def group_by_kommune(table):
     return res
 
 
+def get_hex(table):
+    cur = conn.cursor()
+    sql = '''
+    SELECT
+        ST_AsGeoJSON(hex.wkb_geometry) as geom,
+        COUNT({0}.ogc_fid) AS count
+    FROM hex 
+      LEFT JOIN {0} ON st_contains(hex.wkb_geometry, {0}.wkb_geometry)
+    GROUP BY hex.wkb_geometry
+    ORDER BY count DESC
+    '''.format(table)
+    cur.execute(sql)
+
+    features = [parse_row(row) for row in cur.fetchall()]
+    cur.close()
+    return {
+        'type': 'FeatureCollection',
+        'features': features
+    }
+
+
 def get_kommune_stats():
     return {
         'pol': group_by_kommune('pol'),
         'pubs': group_by_kommune('pubs'),
         'breweries': group_by_kommune('breweries'),
+        'hex': get_hex('breweries')
     }
 
 
