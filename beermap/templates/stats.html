@@ -33,14 +33,27 @@
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
         <h1>Statistikk</h1>
 
-        <h2>Bryggerier pr kommune</h2>
-        <svg class="chart chart-breweries"></svg>
+        <h2>Bryggerier</h2>
+        <h3>Innbyggere pr bryggeri, bunn 10</h3>
+        <svg class="chart chart-breweries-bottom"></svg>
 
-        <h2>Pol pr kommune</h2>
-        <svg class="chart chart-pol"></svg>
+        <h3>Innbyggere pr bryggeri, topp 10</h3>
+        <svg class="chart chart-breweries-top"></svg>
 
-        <h2>Puber pr kommune</h2>
-        <svg class="chart chart-pubs"></svg>
+
+        <h2>Pol</h2>
+        <h3>Innbyggere pr pol, bunn 10</h3>
+        <svg class="chart chart-pol-bottom"></svg>
+
+        <h3>Innbyggere pr pol, topp 10</h3>
+        <svg class="chart chart-pol-top"></svg>
+
+        <h2>Pub</h2>
+        <h3>Innbyggere pr pub, bunn 10</h3>
+        <svg class="chart chart-pubs-bottom"></svg>
+
+        <h3>Innbyggere pr pub, topp 10</h3>
+        <svg class="chart chart-pubs-top"></svg>
 
         <h2>Hexmap</h2>
         <ul id="layertabs" class="nav nav-tabs"></ul>
@@ -62,10 +75,34 @@
 
             var stats = {{stats | safe}};
 
-            renderChart(_.first(stats.breweries, 10), 'chart-breweries');
-            renderChart(_.first(stats.pol, 10), 'chart-pol');
-            renderChart(_.first(stats.pubs, 10), 'chart-pubs');
+            function sortData(data, key) {
+                return data.sort(function compare(a, b) {
+                    if (a[key] < b[key]) {
+                        return -1;
+                    }
+                    if (a[key] > b[key]) {
+                        return 1;
+                    }
+                    // a must be equal to b
+                    return 0;
+                });
+            }
 
+            function calc(data) {
+                return _.map(data, function (d) {
+                    var pop_by_num = d.population / d.num;
+                    d.pop_by_num = pop_by_num;
+                    return d;
+                });
+            }
+
+            var keys = ['breweries', 'pol', 'pubs'];
+
+            _.each(keys, function (key) {
+                var calculated = sortData(calc(stats[key]), 'pop_by_num');
+                renderChart(_.first(calculated, 10), 'chart-' + key + '-bottom');
+                renderChart(_.first(calculated.reverse(), 10), 'chart-' + key + '-top');
+            });
 
             renderHexmap(stats.hex);
 

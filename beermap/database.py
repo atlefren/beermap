@@ -119,12 +119,14 @@ def get_ten_closest(table, lat, lon):
 def group_by_kommune(table):
     cur = conn.cursor()
     sql = '''
-        SELECT kommuner.navn, kommuner.komm, count(*) AS num
-        FROM kommuner, {0}
+        SELECT kommuner.navn, kommuner.komm, count(*) AS num, p.population as population
+        FROM kommuner, {0}, population p
         WHERE st_intersects(kommuner.wkb_geometry, {0}.wkb_geometry)
-        GROUP BY kommuner.komm, kommuner.navn
+        AND kommuner.komm = p.komm
+        GROUP BY kommuner.komm, kommuner.navn, population
         order by num DESC'''.format(table)
 
+    print sql
     cur.execute(sql)
 
     res = cur.fetchall()
@@ -138,7 +140,7 @@ def get_hex(table):
     SELECT
         ST_AsGeoJSON(hex.wkb_geometry) as geom,
         COUNT({0}.ogc_fid) AS count
-    FROM hex 
+    FROM hex
       LEFT JOIN {0} ON st_contains(hex.wkb_geometry, {0}.wkb_geometry)
     GROUP BY hex.wkb_geometry
     ORDER BY count DESC

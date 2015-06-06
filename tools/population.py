@@ -43,6 +43,6 @@ for line in lines:
     s = line.split(';')
     m = p.match(s[0])
     if m:
-        res.append({'komm': m.group(), 'population': float(s[11])})
+        res.append({'komm': int(m.group()), 'population': float(s[11])})
 
 save(tuple(res))
