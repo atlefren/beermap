@@ -51,149 +51,19 @@
     {% block script %}
     {{super()}}
     <script type="text/javascript" src="{{ url_for('static', filename='lib/d3/d3.min.js')}}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/chart.js')}}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='lib/leaflet/dist/leaflet.js')}}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='lib/L.TileLayer.Kartverket/dist/L.TileLayer.Kartverket.min.js')}}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/hexmap.js')}}"></script>
 
     <script type="text/javascript">
         (function () {
             'use strict';
 
-            function tabs(div, layers, map) {
-                _.first(layers).selected = true;
-
-                var onMap;
-
-                var els = _.map(layers, function (layer) {
-                    console.log(layer.selected)
-                    var tab = $('<li role="presentation"><a href="#">' + layer.name + '</a></li>');
-                    if (layer.selected) {
-                        tab.addClass('active');
-                        onMap = layer.layer;
-                        map.addLayer(onMap);
-                    }
-                    tab.on('click', function (e) {
-                        e.preventDefault();
-                        if (!layer.selected) {
-                            map.removeLayer(onMap);
-                            onMap = layer.layer;
-                            map.addLayer(onMap);
-                            _.each(layers, function (l) {
-                                l.selected = false;
-                            });
-                            div.find('li').removeClass('active');
-                            tab.addClass('active');
-                            layer.selected = true;
-                        }
-                    });
-                    return tab;
-                });
-                div.append(els);
-            }
-
-            function renderHexmap(hexes) {
-                function getHexLayer(geoJson) {
-                    var max = _.max(geoJson.features, function (feature) {
-                        return feature.properties.count;
-                    }).properties.count;
-
-                    var colors = [
-                        '#F7FBFF',
-                        '#C7DCEF',
-                        '#72B2D7',
-                        '#2878B8',
-                        '#08306B'
-                    ];
-
-                    function getColorFunc(max) {
-                      var step = max / 4;
-                      var steps = _.map(_.range(0, 4), function (i) {
-                          return i * step
-                      });
-                      return function(count) {
-                        if (count > max) {
-                          return _.last(colors);
-                        }
-                        var a = _.find(steps, function (step, i) {
-                          return count <= step;
-                        });
-                        return colors[steps.indexOf(a)];
-                      }
-                    }
-
-                    var getColor = getColorFunc(max);
-
-                    return L.geoJson(geoJson,{
-                        style: function (feature) {
-                            return {
-                                weight: 1,
-                                clickable: false,
-                                color: '#000',
-                                fillColor: getColor(feature.properties.count),
-                                fillOpacity: 0.5
-                            };
-                        }
-                    })
-                }
-
-
-
-                var layers = [
-                    {name: 'Puber', layer: getHexLayer(hexes.pubs)},
-                    {name: 'Pol', layer: getHexLayer(hexes.pol)},
-                    {name: 'Bryggerier', layer: getHexLayer(hexes.breweries)}
-                ];
-
-                var map = L.map('map').setView([65.5, 17.0], 4);
-
-                tabs($('#layertabs'), layers, map);
-
-                L.tileLayer.kartverket('norges_grunnkart').addTo(map);
-            }
-
-            function renderChart(data, element) {
-                var width = 420,
-                barHeight = 20;
-
-                var x = d3.scale.linear()
-                    .domain([0, d3.max(_.pluck(data, 'num'))])
-                    .range([0, width - 40]);
-
-                var chart = d3.select("." + element)
-                    .attr("width", width)
-                    .attr("height", barHeight * data.length);
-
-                var bar = chart.selectAll("g")
-                    .data(data)
-                  .enter().append("g")
-                    .attr("transform", function(d, i) { return "translate(0," + i * barHeight + ")"; });
-
-                var g = bar.append('g')
-                    .attr('transform', 'translate(40, 0)');
-
-                g.append("rect")
-                    .attr("width", function(d) {return x(d.num); })
-                    .attr("height", barHeight - 1);
-
-                g.append("text")
-                    .attr("class", 'number')
-                    .attr("x", function(d) { return x(d.num) - 3; })
-                    .attr("y", barHeight / 2)
-                    .attr("dy", ".35em")
-                    .text(function(d) { return d.num;});
-
-                bar.append("text")
-                    .attr("x", 2)
-                    .attr("class", 'text')
-                    .attr("y", barHeight / 2)
-                    .attr("dy", ".35em")
-                    .text(function(d) { return d.navn;});
-            }
-
             var stats = {{stats | safe}};
-            console.log(stats.hex);
+
             renderChart(_.first(stats.breweries, 10), 'chart-breweries');
             renderChart(_.first(stats.pol, 10), 'chart-pol');
-
             renderChart(_.first(stats.pubs, 10), 'chart-pubs');
 
 
