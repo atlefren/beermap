@@ -59,6 +59,13 @@
             'use strict';
 
             function renderHexmap(geoJson) {
+                var max = _.max(geoJson.features, function (feature) {
+                    return feature.properties.count;
+                }).properties.count;
+                console.log(max);
+
+
+
                 var map = L.map('map').setView([65.5, 17.0], 4);
 
                 L.tileLayer.kartverket('norges_grunnkart').addTo(map);
@@ -71,28 +78,32 @@
                     '#08306B'
                 ];
 
+                function getColorFunc(max) {
+                  var step = max / 4;
+                  var steps = _.map(_.range(0, 4), function (i) {
+                      return i * step
+                  });
+                  return function(count) {
+                    if (count > max) {
+                      return _.last(colors);
+                    }
+                    var a = _.find(steps, function (step, i) {
+                      return count <= step;
+                    });
+                    return colors[steps.indexOf(a)];
+                  }
+                }
+
+                var getColor = getColorFunc(max);
+
                 L.geoJson(geoJson,{
                     style: function (feature) {
-
-                        var color;
-                        if (feature.properties.count === 0) {
-                            color = colors[0];
-                        } else if (feature.properties.count < 20) {
-                            color = colors[1];
-                        } else if (feature.properties.count < 40) {
-                            color = colors[2];
-                        } else if (feature.properties.count < 60) {
-                            color = colors[3];
-                        } else {
-                            color = colors[3];
-                        }
-
-
                         return {
                             weight: 1,
+                            clickable: false,
                             color: '#000',
-                            fillColor: color,
-                            fillOpacity: 0.8
+                            fillColor: getColor(feature.properties.count),
+                            fillOpacity: 0.5
                         };
                     }
                 }).addTo(map);
