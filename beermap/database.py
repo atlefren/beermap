@@ -20,10 +20,6 @@ column_list = {
 }
 
 
-def get_kommune_stats():
-    return
-
-
 def create_featurecollection(features):
     return {
         'type': 'FeatureCollection',
@@ -111,6 +107,31 @@ def get_ten_closest(table, lat, lon):
     return {
         'type': 'FeatureCollection',
         'features': features
+    }
+
+
+def group_by_kommune(table):
+    cur = conn.cursor()
+    sql = '''
+        SELECT kommuner.navn, kommuner.komm, count(*) AS num
+        FROM kommuner, {0}
+        WHERE st_intersects(kommuner.wkb_geometry, {0}.wkb_geometry)
+        GROUP BY kommuner.komm, kommuner.navn
+        order by num DESC'''.format(table)
+
+    print sql
+    cur.execute(sql)
+
+    res = cur.fetchall()
+    cur.close()
+    return res
+
+
+def get_kommune_stats():
+    return {
+        'pol': group_by_kommune('pol'),
+        'pubs': group_by_kommune('pubs'),
+        'breweries': group_by_kommune('breweries'),
     }
 
 

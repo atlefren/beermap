@@ -12,6 +12,7 @@ app = Flask(__name__)
 pages = [
     {'endpoint': 'nearby', 'title': u'I nærheten'},
     {'endpoint': 'map', 'title': 'Kart'},
+    {'endpoint': 'stats', 'title': u'Statistikk'},
     {'endpoint': 'about', 'title': u'Om ølkart'},
 ]
 
@@ -101,8 +102,12 @@ def get_nearby():
 
 @app.route('/stats')
 def stats():
-    kommuner = get_kommuner()
-    return ''
+    stats = get_kommune_stats()
+    return render_template(
+        'stats.html',
+        pages=pages,
+        stats=json.dumps(stats)
+    )
 
 
 if __name__ == '__main__':
