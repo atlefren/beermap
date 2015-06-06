@@ -31,11 +31,15 @@ function BeerMap(layers, templates, mappings, defaults) {
             map.removeLayer(overlays);
             overlays.off();
         }
-
+        var icon = icons[item.id];
         var template = templates[item.id];
         var defaultProps = defaults[item.id] || {};
         var mapping = mappings[item.id] || function (a) {return a; };
-        var data = L.geoJson(item.data);
+        var data = L.geoJson(item.data, {
+            pointToLayer: function(feature, latlng) {
+                return L.marker(latlng, {icon: icon});
+            }
+        });
         overlays = new L.MarkerClusterGroup()
             .addLayers(data.getLayers())
             .addTo(map);

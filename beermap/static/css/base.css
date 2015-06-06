@@ -138,3 +138,9 @@ body {
 .leaflet-control-info table th {
     padding-right: 5px; 
 }
+
+.or {
+    margin-left: 0;
+    padding-left: 25px;
+    padding-top: 6px;
+}
