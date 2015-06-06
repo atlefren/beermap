@@ -36,6 +36,7 @@
     <script type="text/javascript" src="{{ url_for('static', filename='lib/proj4/dist/proj4.js')}}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='lib/geojson-utils/src/jsonConverters.js')}}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/svvRoute.js')}}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/icons.js')}}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/L.Control.Info.js')}}"></script>
     <script type="text/javascript">
 
@@ -49,7 +50,7 @@
 
         (function () {
             'use strict';
-
+            var icon = icons['{{dataset}}'];
             var dirTemplate = _.template($('#directions_template').html());
 
             var nameAttr = '{{name_attr}}';
@@ -59,7 +60,11 @@
             L.tileLayer.kartverket('norges_grunnkart').addTo(map);
 
             var from = L.marker({{from_pos | safe}});
-            var to = L.geoJson({{to_feature | safe}}).getLayers()[0];
+            var to = L.geoJson({{to_feature | safe}}, {
+                pointToLayer: function(feature, latlng) {
+                    return L.marker(latlng, {icon: icon});
+                }
+            }).getLayers()[0];
 
             var layer = L.featureGroup([from, to]).addTo(map);
             map.fitBounds(layer.getBounds());

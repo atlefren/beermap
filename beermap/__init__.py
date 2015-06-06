@@ -86,7 +86,8 @@ def route():
         pages=pages,
         from_pos=json.dumps(from_pos),
         to_feature=json.dumps(feature),
-        name_attr=name_attr
+        name_attr=name_attr,
+        dataset=dataset
     )
 
 
