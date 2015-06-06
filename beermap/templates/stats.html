@@ -43,6 +43,7 @@
         <svg class="chart chart-pubs"></svg>
 
         <h2>Hexmap</h2>
+        <ul id="layertabs" class="nav nav-tabs"></ul>
         <div id="map"></div>
     </div>
     {% endblock %}
@@ -50,7 +51,6 @@
     {% block script %}
     {{super()}}
     <script type="text/javascript" src="{{ url_for('static', filename='lib/d3/d3.min.js')}}"></script>
-
     <script type="text/javascript" src="{{ url_for('static', filename='lib/leaflet/dist/leaflet.js')}}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='lib/L.TileLayer.Kartverket/dist/L.TileLayer.Kartverket.min.js')}}"></script>
 
@@ -58,57 +58,97 @@
         (function () {
             'use strict';
 
-            function renderHexmap(geoJson) {
-                var max = _.max(geoJson.features, function (feature) {
-                    return feature.properties.count;
-                }).properties.count;
-                console.log(max);
+            function tabs(div, layers, map) {
+                _.first(layers).selected = true;
+
+                var onMap;
+
+                var els = _.map(layers, function (layer) {
+                    console.log(layer.selected)
+                    var tab = $('<li role="presentation"><a href="#">' + layer.name + '</a></li>');
+                    if (layer.selected) {
+                        tab.addClass('active');
+                        onMap = layer.layer;
+                        map.addLayer(onMap);
+                    }
+                    tab.on('click', function (e) {
+                        e.preventDefault();
+                        if (!layer.selected) {
+                            map.removeLayer(onMap);
+                            onMap = layer.layer;
+                            map.addLayer(onMap);
+                            _.each(layers, function (l) {
+                                l.selected = false;
+                            });
+                            div.find('li').removeClass('active');
+                            tab.addClass('active');
+                            layer.selected = true;
+                        }
+                    });
+                    return tab;
+                });
+                div.append(els);
+            }
+
+            function renderHexmap(hexes) {
+                function getHexLayer(geoJson) {
+                    var max = _.max(geoJson.features, function (feature) {
+                        return feature.properties.count;
+                    }).properties.count;
+
+                    var colors = [
+                        '#F7FBFF',
+                        '#C7DCEF',
+                        '#72B2D7',
+                        '#2878B8',
+                        '#08306B'
+                    ];
+
+                    function getColorFunc(max) {
+                      var step = max / 4;
+                      var steps = _.map(_.range(0, 4), function (i) {
+                          return i * step
+                      });
+                      return function(count) {
+                        if (count > max) {
+                          return _.last(colors);
+                        }
+                        var a = _.find(steps, function (step, i) {
+                          return count <= step;
+                        });
+                        return colors[steps.indexOf(a)];
+                      }
+                    }
+
+                    var getColor = getColorFunc(max);
+
+                    return L.geoJson(geoJson,{
+                        style: function (feature) {
+                            return {
+                                weight: 1,
+                                clickable: false,
+                                color: '#000',
+                                fillColor: getColor(feature.properties.count),
+                                fillOpacity: 0.5
+                            };
+                        }
+                    })
+                }
 
 
+
+                var layers = [
+                    {name: 'Puber', layer: getHexLayer(hexes.pubs)},
+                    {name: 'Pol', layer: getHexLayer(hexes.pol)},
+                    {name: 'Bryggerier', layer: getHexLayer(hexes.breweries)}
+                ];
 
                 var map = L.map('map').setView([65.5, 17.0], 4);
 
+                tabs($('#layertabs'), layers, map);
+
                 L.tileLayer.kartverket('norges_grunnkart').addTo(map);
-
-                var colors = [
-                    '#F7FBFF',
-                    '#C7DCEF',
-                    '#72B2D7',
-                    '#2878B8',
-                    '#08306B'
-                ];
-
-                function getColorFunc(max) {
-                  var step = max / 4;
-                  var steps = _.map(_.range(0, 4), function (i) {
-                      return i * step
-                  });
-                  return function(count) {
-                    if (count > max) {
-                      return _.last(colors);
-                    }
-                    var a = _.find(steps, function (step, i) {
-                      return count <= step;
-                    });
-                    return colors[steps.indexOf(a)];
-                  }
-                }
-
-                var getColor = getColorFunc(max);
-
-                L.geoJson(geoJson,{
-                    style: function (feature) {
-                        return {
-                            weight: 1,
-                            clickable: false,
-                            color: '#000',
-                            fillColor: getColor(feature.properties.count),
-                            fillOpacity: 0.5
-                        };
-                    }
-                }).addTo(map);
             }
-
 
             function renderChart(data, element) {
                 var width = 420,

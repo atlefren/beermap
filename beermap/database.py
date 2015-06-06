@@ -158,7 +158,11 @@ def get_kommune_stats():
         'pol': group_by_kommune('pol'),
         'pubs': group_by_kommune('pubs'),
         'breweries': group_by_kommune('breweries'),
-        'hex': get_hex('breweries')
+        'hex': {
+            'pol': get_hex('pol'),
+            'pubs': get_hex('pubs'),
+            'breweries': get_hex('breweries')
+        }
     }
 
 
