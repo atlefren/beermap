@@ -32,8 +32,14 @@
     {% block main %}
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
         <h1>Statistikk</h1>
+        <div id="graphs"></div>
+
 
         <h2>Bryggerier</h2>
+        
+        <h3>Antall bryggerier, topp 10</h3>
+        <svg class="chart chart-breweries-all"></svg>
+
         <h3>Innbyggere pr bryggeri, bunn 10</h3>
         <svg class="chart chart-breweries-bottom"></svg>
 
@@ -42,6 +48,10 @@
 
 
         <h2>Pol</h2>
+
+        <h3>Antall pol, topp 10</h3>
+        <svg class="chart chart-pol-all"></svg>
+
         <h3>Innbyggere pr pol, bunn 10</h3>
         <svg class="chart chart-pol-bottom"></svg>
 
@@ -49,6 +59,10 @@
         <svg class="chart chart-pol-top"></svg>
 
         <h2>Pub</h2>
+
+        <h3>Antall puber, topp 10</h3>
+        <svg class="chart chart-pubs-all"></svg>
+
         <h3>Innbyggere pr pub, bunn 10</h3>
         <svg class="chart chart-pubs-bottom"></svg>
 
@@ -100,8 +114,9 @@
 
             _.each(keys, function (key) {
                 var calculated = sortData(calc(stats[key]), 'pop_by_num');
-                renderChart(_.first(calculated, 10), 'chart-' + key + '-bottom');
-                renderChart(_.first(calculated.reverse(), 10), 'chart-' + key + '-top');
+                renderChart(_.first(calculated, 10), 'chart-' + key + '-bottom', 'pop_by_num');
+                renderChart(_.first(calculated.reverse(), 10), 'chart-' + key + '-top', 'pop_by_num');
+                renderChart(_.first(sortData(stats[key], 'num').reverse(), 10), 'chart-' + key + '-all', 'num');
             });
 
             renderHexmap(stats.hex);

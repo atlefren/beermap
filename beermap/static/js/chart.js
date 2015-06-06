@@ -1,9 +1,7 @@
 /*global d3:false */
 
-function renderChart(data, element) {
+function renderChart(data, element, key) {
     'use strict';
-
-    var key = 'pop_by_num';
 
     var width = 420,
         barHeight = 20;

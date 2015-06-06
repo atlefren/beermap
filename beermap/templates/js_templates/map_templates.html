@@ -26,6 +26,69 @@
    <!-- <a href="<%= link %>">Mer info</a>-->
 </script>
 
+<script type="text/template" id="brewery_edit_template">
+    <h3>Opprett/endre bryggeri</h3>
+    <form>
+    <table>
+        <tr>
+            <th><label for="name">Navn</label></th>
+            <td>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Navn" value="<%= name %>">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th><label for="website">Webside</label></th>
+            <td>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="website" name="website" placeholder="http://" value="<%= website %>">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th><label for="comment">Kommentar</label></th>
+            <td>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="comment" name="comment" placeholder="kort kommentar" value="<%= comment %>">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th>Adresse</th>
+            <td>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="street" name="street" placeholder="kort kommentar" value="<%= street %>">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="address" name="address" placeholder="kort kommentar" value="<%= address %>">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div class="checkbox">
+                    <label>
+                        <input id="active" type="checkbox" name="active" <% if(active) { print("checked") } %>> Aktivt?
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input id="has_shop" type="checkbox" name="has_shop" <% if(has_shop) { print("checked") } %>> Har butikk?
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input id="has_serving" type="checkbox" name="has_serving" <% if(has_serving) { print("checked") } %>> Har servering?
+                    </label>
+                </div>
+            </td>
+        </tr>
+    </table>
+    </form>
+</script>
+
+
 <script type="text/template" id="menu_element_template">
     <li id="map_<%=id%>"><a href="#"><%= title %></a></li>
 </script>

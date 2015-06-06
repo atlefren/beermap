@@ -4,6 +4,11 @@
 
 L.Control.AdresseSok = L.Control.extend({
 
+    options: {
+        zoom: 5
+    },
+
+
     initialize: function (options) {
         L.setOptions(this, options);
     },
@@ -15,8 +20,11 @@ L.Control.AdresseSok = L.Control.extend({
     },
 
     _showResult: function (adresse) {
-        this._map.setView([adresse.nord, adresse.aust], 12);
+        this._map.setView([adresse.nord, adresse.aust], this.options.zoom);
         this._results.innerHTML = '';
+        if (this.options.callback) {
+            this.options.callback(L.latLng(adresse.nord, adresse.aust), adresse);
+        }
     },
 
     _gotResults: function (res) {

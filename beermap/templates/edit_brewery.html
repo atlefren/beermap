@@ -1,0 +1,222 @@
+{% extends "base.html" %}
+
+    {% block css %}
+    {{super()}}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='lib/leaflet/dist/leaflet.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='lib/leaflet.markercluster/dist/MarkerCluster.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='lib/leaflet.markercluster/dist/MarkerCluster.Default.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='lib/leaflet-draw/dist/leaflet.draw.css')}}">
+
+    <style type="text/css">
+        .leaflet-control-sok {
+            background-color: #fff;
+            border-radius: 4px;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.65);
+        }
+
+    </style>
+    {% endblock %}
+
+    {% block main %}
+    <div id="map" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 map">
+    </div>
+    {% endblock %}
+
+    {% block templates %}
+        {% include('js_templates/map_templates.html') %}
+    {% endblock %}
+
+
+    {% block script %}
+    {{super()}}
+    <script type="text/javascript" src="{{ url_for('static', filename='lib/leaflet/dist/leaflet.js')}}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='lib/L.TileLayer.Kartverket/dist/L.TileLayer.Kartverket.min.js')}}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='lib/leaflet.markercluster/dist/leaflet.markercluster.js')}}"></script>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='js/adressesok.js')}}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/L.Control.Info.js')}}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/icons.js')}}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='lib/leaflet-draw/dist/leaflet.draw.js')}}"></script>
+
+
+
+    <script type="text/javascript">
+
+        function fromGeoJson(geojson) {
+            var icon = icons['breweries'];
+            var data = L.geoJson(geojson, {
+                pointToLayer: function(feature, latlng) {
+                    return L.marker(latlng, {icon: icon});
+                }
+            });
+            return data.getLayers();
+        }
+
+
+        L.Control.Edit = L.Control.Info.extend({
+
+                options: {
+                    defaults: {
+                        name: null,
+                        active: true,
+                        has_serving: false,
+                        has_shop: false,
+                        type: 'mikrobryggeri',
+                        website: null,
+                        street: null,
+                        address: null,
+                        comment: null
+                    }
+                },
+
+                _initLayout: function () {
+                    var className = 'leaflet-control-info';
+                    this._container = L.DomUtil.create('div', className);
+                    L.DomEvent.on(this._container, 'click', L.DomEvent.stopPropagation);
+                    L.DomEvent.on(this._container, 'mousedown', L.DomEvent.stopPropagation);
+
+                    var closeBtn = L.DomUtil.create('button', 'close', this._container);
+                    L.DomEvent.on(closeBtn, 'click', function () {
+                        this.hide();
+                    }, this);
+                    var span = L.DomUtil.create('span', '', closeBtn);
+                    span.innerHTML = '&times;';
+                    this._content = L.DomUtil.create('div', '', this._container);
+                    this.hide();
+                },
+
+                showFeature: function (feature) {
+
+                },
+
+                editFeature: function (feature) {
+
+                },
+
+                _replace: function (value) {
+                    if (value === 'on') {
+                        return true;
+                    }
+                    if (value === 'off') {
+                        return false;
+                    }
+                    return value;
+                },
+
+                _save: function () {
+                    var form = $(this._content).find('form');
+
+                    var params = _.reduce(_.keys(this.options.defaults), function (acc, key) {
+                        acc[key] = this._replace(form.find('#' + key).val());
+                        return acc;
+                    }, {}, this);
+
+                    var geoJson = L.marker(this._latLng).toGeoJSON();
+                    geoJson.properties = _.extend({}, this.options.defaults, params);
+                    geoJson.properties.type = 'mikrobryggeri'
+
+                    var self = this;
+                    $.ajax({
+                        'url': '/save_brewery',
+                        'method': 'POST',
+                        'data': JSON.stringify(geoJson),
+                        'contentType' : 'application/json',
+                        'success': function (e) {
+
+                            self.options.markers.addLayers(fromGeoJson(e));
+                            self.options.selectLayer.clearLayers();
+                            self.hide();
+                        }
+                    });
+                },
+
+                addFeature: function (latLng, address) {
+                    this._latLng = latLng;
+                    var data = _.extend({}, this.options.defaults);
+                    if (address) {
+                        data.street = address.adressenavn + ' ' + (address.husnr || '')  + ' ' + (address.bokstav || '');
+                        data.address = address.postnr + ' ' + address.poststed;
+                    }
+
+                    this._content.innerHTML = this.options.editTemplate(data);
+                    this._container.style.display = 'block';
+                    var saveBtn = L.DomUtil.create('button', 'btn btn-primary', this._content);
+                    saveBtn.innerHTML = 'Lagre'
+                    L.DomEvent.on(saveBtn, 'click', function () {
+                        this._save();
+                    }, this);
+                }
+        });
+
+        var BreweryEditMap = function (breweries, template, editTemplate) {
+            var map;
+            var edit;
+
+            var drawLayer;
+
+            function _pointAdded(latLng, address) {
+                drawLayer.clearLayers();
+                drawLayer.addLayer(L.marker(latLng));
+                edit.addFeature(latLng, address);
+            }
+
+            function setupMap(pos, zoom) {
+
+                map = L.map('map').setView(pos, zoom);
+
+                L.tileLayer.kartverket('norges_grunnkart').addTo(map);
+                L.control.adresseSok({callback: _pointAdded, zoom: 16}).addTo(map);
+
+                var overlays = new L.MarkerClusterGroup()
+                    .addLayers(fromGeoJson(breweries))
+                    .addTo(map);
+
+                drawLayer = L.featureGroup().addTo(map);
+
+                edit = new L.Control.Edit({
+                    template: template, 
+                    editTemplate: editTemplate,
+                    selectLayer: drawLayer,
+                    markers: overlays
+                });
+
+                map.addControl(edit);
+
+                L.drawLocal.draw.toolbar.buttons.marker = 'Legg til et bryggeri';
+                L.drawLocal.draw.handlers.marker.tooltip.start = 'Slipp markøren i kartet';
+                // Initialise the draw control and pass it the FeatureGroup of editable layers
+                var drawControl = new L.Control.Draw({
+                    edit: false,
+                    draw: {
+                        circle: false,
+                        polygon: false,
+                        polyline: false,
+                        rectangle: false
+                    }
+                });
+                map.on('draw:created', function (e) {
+                    _pointAdded(e.layer.getLatLng());
+                });
+                map.addControl(drawControl);
+            }
+
+            return {
+                setupMap: setupMap
+            };
+        };
+
+
+        (function () {
+            'use strict';
+
+            var template = _.template($('#brewery_template').html());
+            var editTemplate = _.template($('#brewery_edit_template').html());
+
+            var breweries = {{breweries | safe }};
+
+            var beermap = new BreweryEditMap(breweries, template, editTemplate);
+            beermap.setupMap([65.5, 17.0], 4);
+
+        }());
+    </script>
+    {% endblock %}

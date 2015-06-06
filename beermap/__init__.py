@@ -3,7 +3,7 @@
 import json
 from flask import Flask, render_template, jsonify, request, redirect, url_for
 from database import (get_pubs, get_pol, get_breweries, get_nearby_db,
-                      get_feature, get_kommune_stats)
+                      get_feature, get_kommune_stats, db_save_brewery)
 import requests
 
 app = Flask(__name__)
@@ -13,6 +13,7 @@ pages = [
     {'endpoint': 'nearby', 'title': u'I nærheten'},
     {'endpoint': 'map', 'title': 'Kart'},
     {'endpoint': 'stats', 'title': u'Statistikk'},
+    {'endpoint': 'edit_brewery', 'title': u'Endre bryggeri'},
     {'endpoint': 'about', 'title': u'Om ølkart'},
 ]
 
@@ -108,6 +109,21 @@ def stats():
         pages=pages,
         stats=json.dumps(stats)
     )
+
+
+@app.route('/edit_brewery')
+def edit_brewery():
+    return render_template(
+        'edit_brewery.html',
+        pages=pages,
+        breweries=json.dumps(get_breweries())
+    )
+
+
+@app.route('/save_brewery', methods=['POST'])
+def save_brewery():
+    f = db_save_brewery(request.json)
+    return jsonify(f)
 
 
 if __name__ == '__main__':

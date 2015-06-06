@@ -3,7 +3,6 @@ import json
 import psycopg2
 from psycopg2.extras import RealDictCursor
 
-
 conn = psycopg2.connect('dbname=beer user=atlefren password=atlefren')
 conn.cursor_factory = RealDictCursor
 
@@ -19,6 +18,27 @@ column_list = {
     'pubs': ['name'],
     'hex': []
 }
+
+
+def db_save_brewery(feature):
+    properties = feature['properties']
+
+    feature['geometry']['coordinates'].append(0.0)
+    properties['geom'] = json.dumps(feature['geometry'])
+
+    print properties
+
+    insert_sql = '''
+        INSERT INTO breweries (name, active, has_serving, has_shop, type, website, street, address, comment, wkb_geometry)
+        VALUES (%(name)s, %(active)s, %(has_serving)s, %(has_shop)s, %(type)s, %(website)s, %(street)s, %(address)s, %(comment)s, ST_SetSRID(ST_GeomFromGeoJSON(%(geom)s), 4326))
+    '''
+
+    cursor = conn.cursor()
+
+    cursor.execute(insert_sql, properties)
+    conn.commit()
+    cursor.close()
+    return feature
 
 
 def create_featurecollection(features):
