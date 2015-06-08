@@ -71,7 +71,7 @@ function BeerMap(layers, templates, mappings, defaults) {
         map = L.map('map').setView(pos, zoom);
 
         L.tileLayer.kartverket('norges_grunnkart').addTo(map);
-        L.control.adresseSok().addTo(map);
+        L.control.adresseSok({zoom: 16}).addTo(map);
 
         info = new L.Control.Info();
         map.addControl(info);

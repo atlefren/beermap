@@ -63,7 +63,7 @@ L.Control.AdresseSok = L.Control.extend({
         L.DomEvent.on(this._container, 'click', L.DomEvent.stopPropagation);
         L.DomEvent.on(this._container, 'mousedown', L.DomEvent.stopPropagation);
 
-        var div = L.DomUtil.create('div', 'input-group');
+        var div = L.DomUtil.create('div', 'input-group mapsearch');
         this._input = L.DomUtil.create('input', 'form-control', div);
         this._input.placeholder = 'Adressesøk..';
         this._input.type = 'text';

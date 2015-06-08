@@ -127,6 +127,10 @@ body {
   margin-left: 20px;
 }
 
+.mapsearch {
+  width: 300px;
+}
+
 
 .leaflet-control-info {
     background-color: #fff;
