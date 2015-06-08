@@ -122,7 +122,6 @@
                         'data': JSON.stringify(geoJson),
                         'contentType' : 'application/json',
                         'success': function (e) {
-
                             self.options.markers.addLayers(fromGeoJson(e));
                             self.options.selectLayer.clearLayers();
                             self.hide();

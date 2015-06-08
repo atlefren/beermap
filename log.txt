@@ -1,0 +1,185 @@
+commit ac16630e3480a591d3e28900906acd3d28bc6c55
+Author: Atle Frenvik Sveen <atle.sveen@norkart.no>
+Date:   Sun Jun 7 14:03:43 2015 +0200
+
+    update python requirements
+
+commit e510b2fdd3955708eb773bc5036c3de25991cccd
+Author: Atle Frenvik Sveen <atle.sveen@norkart.no>
+Date:   Sat Jun 6 15:25:15 2015 +0200
+
+    add breweries!
+
+commit 8ec16868b605138506df70f2150345f5ac8c2f1a
+Author: Atle Frenvik Sveen <atle.sveen@norkart.no>
+Date:   Sat Jun 6 12:02:33 2015 +0200
+
+    add by population to graphs
+
+commit 00c539755afcea2145f12cd164416464b17ea67c
+Author: Atle Frenvik Sveen <atle.sveen@norkart.no>
+Date:   Sat Jun 6 11:23:48 2015 +0200
+
+    download population data
+
+commit 22e8412b5ecb4f4b69aedb33bf2ce4a0d1ad8dbb
+Author: Atle Frenvik Sveen <atle.sveen@norkart.no>
+Date:   Sat Jun 6 09:25:11 2015 +0200
+
+    cleanup
+
+commit b88575f5483d5ee0c335284d3296acf71585f9b1
+Author: Atle Frenvik Sveen <atle.sveen@norkart.no>
+Date:   Sat Jun 6 08:45:00 2015 +0200
+
+    license
+
+commit 0fcf7ec09442631522e70c68613eea4e12a7853a
+Author: Atle Frenvik Sveen <atle.sveen@norkart.no>
+Date:   Sat Jun 6 07:18:45 2015 +0200
+
+    cleanup
+
+commit 0a638ae1e1cf77822ec6b7bae946a6b9ffab085e
+Author: Atle Frenvik Sveen <atle.sveen@norkart.no>
+Date:   Sat Jun 6 07:18:21 2015 +0200
+
+    cleanup
+
+commit 8fd8c0d2eab26db5ec8621bece0693f49f30916e
+Author: Atle Frenvik Sveen <atle.sveen@norkart.no>
+Date:   Sat Jun 6 07:17:09 2015 +0200
+
+    tweak hexagon colors
+
+commit ffd6ea4d6a636a5bd3a3f64942440f93a3fdff9c
+Author: Atle Frenvik Sveen <atle.sveen@norkart.no>
+Date:   Sat Jun 6 06:44:12 2015 +0200
+
+    stats!
+
+commit b648ba8db719b02967962ba85cd1ff4e43f830f4
+Author: Atle Frenvik Sveen <atle.sveen@norkart.no>
+Date:   Sat Jun 6 05:46:30 2015 +0200
+
+    stats
+
+commit f2f1d752d2425f72624c28af3862d54ffdf9ae22
+Author: Atle Frenvik Sveen <atle.sveen@norkart.no>
+Date:   Sat Jun 6 04:29:35 2015 +0200
+
+    convert to postgis for storage
+
+commit 66ff531ef3070de5151d8a7f2a1d76e82609d860
+Author: Atle Frenvik Sveen <atle.sveen@norkart.no>
+Date:   Sat Jun 6 02:22:30 2015 +0200
+
+    adjust popup anchors
+
+commit f82c6974ed943b9bb3e002cb9572fdda4717fb0a
+Author: Atle Frenvik Sveen <atle.sveen@norkart.no>
+Date:   Sat Jun 6 02:15:31 2015 +0200
+
+    add custom icons
+
+commit 017f257b747434f84a313ad4062438cb2e8ac850
+Author: Atle Frenvik Sveen <atle.sveen@norkart.no>
+Date:   Sat Jun 6 01:28:09 2015 +0200
+
+    fix templates
+
+commit 434194a34396128858da230fb844e965728f3143
+Author: Atle Frenvik Sveen <atle.sveen@norkart.no>
+Date:   Sat Jun 6 01:02:22 2015 +0200
+
+    cleanup
+
+commit 87b1d4f992024c7f529750e3ac8fb468165f7c95
+Author: Atle Frenvik Sveen <atle.sveen@norkart.no>
+Date:   Sat Jun 6 00:47:39 2015 +0200
+
+    show route directions
+
+commit d271df7b2c89f708346255b7b681a86dd31a97aa
+Author: Atle Frenvik Sveen <atle.sveen@norkart.no>
+Date:   Fri Jun 5 23:57:00 2015 +0200
+
+    add route planner
+
+commit 06421d14525bbeda13dc3787bc67a31c75d6640d
+Author: Atle Frenvik Sveen <atle.sveen@norkart.no>
+Date:   Fri Jun 5 21:46:07 2015 +0200
+
+    search for address
+
+commit 32ccac92acf87f594159e91d2232c9bbe8b3ed54
+Author: Atle Frenvik Sveen <atle.sveen@norkart.no>
+Date:   Fri Jun 5 21:22:58 2015 +0200
+
+    find nearby
+
+commit 0aceaf7d4487c66f40b95a404e8e44b50289ae81
+Author: Atle Frenvik Sveen <atle.sveen@norkart.no>
+Date:   Fri Jun 5 19:59:07 2015 +0200
+
+    cleanup
+
+commit 67d69770b859791975055760ee509a29450f3525
+Author: Atle Frenvik Sveen <atle.sveen@norkart.no>
+Date:   Fri Jun 5 19:49:11 2015 +0200
+
+    cleanup
+
+commit e0df0420f835da56919c0877ee0e196e4d8a5c48
+Author: Atle Frenvik Sveen <atle.sveen@norkart.no>
+Date:   Fri Jun 5 19:30:02 2015 +0200
+
+    remove pyc
+
+commit 1eb134ec1630bae41f610925293d2d96c8b766b9
+Author: Atle Frenvik Sveen <atle.sveen@norkart.no>
+Date:   Fri Jun 5 19:29:27 2015 +0200
+
+    add pubs
+
+commit 1e9786ae5566c558e2677e97d6b0afdcab2fe387
+Author: Atle Frenvik Sveen <atle.sveen@norkart.no>
+Date:   Fri Jun 5 18:34:12 2015 +0200
+
+    download pubs
+
+commit 610df417aafabd5d0a2febc18d166eb369dd51e6
+Author: Atle Frenvik Sveen <atle.sveen@norkart.no>
+Date:   Fri Jun 5 17:44:47 2015 +0200
+
+    fix typo
+
+commit 463742b2f3263cef0b7be7c7fd50015b4f3485cc
+Author: Atle Frenvik Sveen <atle.sveen@norkart.no>
+Date:   Fri Jun 5 17:43:46 2015 +0200
+
+    add address search
+
+commit dca8e4c587916025af4ccc36ed81144d6efc4b0e
+Author: Atle Frenvik Sveen <atle.sveen@norkart.no>
+Date:   Fri Jun 5 16:57:10 2015 +0200
+
+    add geoip
+
+commit d15709561af4587eefc5c4edc9a80363ab8300b3
+Author: Atle Frenvik Sveen <atle.sveen@norkart.no>
+Date:   Fri Jun 5 16:41:45 2015 +0200
+
+    show pol in map
+
+commit 52762ad0f927bce9b8d9161e6ca4ecc6f36b3e57
+Author: Atle Frenvik Sveen <atle.sveen@norkart.no>
+Date:   Fri Jun 5 16:28:41 2015 +0200
+
+    parse pol
+
+commit cc496dc3abb35786473a0627af6d4e493611464d
+Author: Atle Frenvik Sveen <atle.sveen@norkart.no>
+Date:   Fri Jun 5 15:31:29 2015 +0200
+
+    first commit

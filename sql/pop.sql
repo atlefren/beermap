@@ -1,0 +1,1 @@
+CREATE TABLE public.population(komm int PRIMARY KEY, population real)

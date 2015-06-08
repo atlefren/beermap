@@ -8,7 +8,6 @@ argparse==1.2.1
 geojson==1.0.9
 haversine==0.4.0
 itsdangerous==0.24
-overpass==0.1.0
 psycopg2==2.6
 pyshp==1.2.1
 requests==2.7.0
