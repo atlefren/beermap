@@ -44,7 +44,6 @@ function BeerMap(layers, templates, mappings, defaults) {
             .addLayers(data.getLayers())
             .addTo(map);
         overlays.on('click', function (e) {
-            console.log(e.layer.feature.properties)
             info.setContent(
                 template(
                     _.extend(
