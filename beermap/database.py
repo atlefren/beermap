@@ -10,7 +10,7 @@ def get_conn():
         dbname=os.getenv('DB_NAME', 'beer'),
         user=os.getenv('DB_USER', 'atlefren'),
         password=os.getenv('DB_PASS', 'atlefren'),
-        host=os.getenv('DB_PASS', 'localhost')
+        host=os.getenv('DB_HOST', 'localhost')
     )
     conn.cursor_factory = RealDictCursor
     return conn
