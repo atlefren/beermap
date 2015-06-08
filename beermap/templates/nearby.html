@@ -94,7 +94,11 @@
 
                 function showNearby(addr, lat, lon) {
                     $('#results').removeClass('hidden');
-                    $('#place').html(addr);
+                    if (addr) {
+                        $('#place').html(addr);
+                    } else {
+                        $('#place').html('Klarte ikke å finne addresse');
+                    }
 
                     getNearby(lat, lon, function (res) {
                         _.each(types, function (mapper, key) {
@@ -125,10 +129,20 @@
                 $('#geoloc').on('click', function () {
                     navigator.geolocation.getCurrentPosition(function (position) {
                         getAddresse(position.coords.latitude, position.coords.longitude, function (res) {
-                            res = JSON.parse(res);
-                            var adresse = res.adresser[0];
-                            var addr = adresse.kortadressenavn + ' ' + (adresse.husnr || '')  + ' ' + (adresse.bokstav || '') + ' ' +adresse.poststed;
-                            showNearby(addr, position.coords.latitude, position.coords.longitude)
+                            try {
+                                res = JSON.parse(res);
+                            } catch (err) {
+                                showNearby(null, position.coords.latitude, position.coords.longitude);
+                                return;
+                            }
+
+                            if (res.adresser && res.adresser.length) {
+                                var adresse = res.adresser[0];
+                                var addr = adresse.kortadressenavn + ' ' + (adresse.husnr || '')  + ' ' + (adresse.bokstav || '') + ' ' +adresse.poststed;
+                                showNearby(addr, position.coords.latitude, position.coords.longitude);    
+                            } else {
+                                showNearby(null, position.coords.latitude, position.coords.longitude);
+                            }
                         });
                     });
                 });
