@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-
+import os
 import json
 from flask import Flask, render_template, jsonify, request, redirect, url_for
 from database import (get_pubs, get_pol, get_breweries, get_nearby_db,
@@ -63,7 +63,10 @@ def route_proxy():
     url = 'https://www.vegvesen.no/ruteplan/routingservice_v1_0/routingService'
     res = requests.get(
         url + '?' + request.query_string,
-        auth=('TjeRuteplanDataut', 'l0adRun3R12')
+        auth=(
+            os.getenv('ROUTE_USER', 'TjeRuteplanDataut'),
+            os.getenv('ROUTE_PASS', 'l0adRun3R12'),
+        )
     )
     return jsonify(res.json())
 

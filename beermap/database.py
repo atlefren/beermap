@@ -1,11 +1,19 @@
 # -*- coding: utf-8 -*-
+import os
 import json
 import psycopg2
 from psycopg2.extras import RealDictCursor
 
-conn = psycopg2.connect('dbname=beer user=atlefren password=atlefren')
-conn.cursor_factory = RealDictCursor
 
+def get_conn():
+    conn = psycopg2.connect(
+        dbname=os.getenv('DB_NAME', 'beer'),
+        user=os.getenv('DB_USER', 'atlefren'),
+        password=os.getenv('DB_PASS', 'atlefren'),
+        host=os.getenv('DB_PASS', 'localhost')
+    )
+    conn.cursor_factory = RealDictCursor
+    return conn
 
 column_list = {
     'pol': ['apn_tirsdag', 'apn_torsdag', 'butikknavn',
@@ -26,18 +34,18 @@ def db_save_brewery(feature):
     feature['geometry']['coordinates'].append(0.0)
     properties['geom'] = json.dumps(feature['geometry'])
 
-    print properties
-
     insert_sql = '''
         INSERT INTO breweries (name, active, has_serving, has_shop, type, website, street, address, comment, wkb_geometry)
         VALUES (%(name)s, %(active)s, %(has_serving)s, %(has_shop)s, %(type)s, %(website)s, %(street)s, %(address)s, %(comment)s, ST_SetSRID(ST_GeomFromGeoJSON(%(geom)s), 4326))
     '''
 
+    conn = get_conn()
     cursor = conn.cursor()
 
     cursor.execute(insert_sql, properties)
     conn.commit()
     cursor.close()
+    conn.close()
     return feature
 
 
@@ -59,6 +67,7 @@ def parse_row(row):
 
 
 def get_feature(table, id):
+    conn = get_conn()
     cur = conn.cursor()
 
     sql = '''
@@ -69,10 +78,12 @@ def get_feature(table, id):
     cur.execute(sql)
     d = parse_row(cur.fetchone())
     cur.close()
+    conn.close()
     return d
 
 
 def get_table(table, columns):
+    conn = get_conn()
     cur = conn.cursor()
     cols = ''
     if len(columns):
@@ -81,10 +92,10 @@ def get_table(table, columns):
         SELECT {0} ST_AsGeoJSON(wkb_geometry) as geom, ogc_fid as id FROM {1}
     '''.format(cols, table)
 
-    print sql
     cur.execute(sql)
     features = [parse_row(row) for row in cur.fetchall()]
     cur.close()
+    conn.close()
     return {
         'type': 'FeatureCollection',
         'features': features
@@ -108,7 +119,7 @@ def get_pubs():
 
 
 def get_ten_closest(table, lat, lon):
-
+    conn = get_conn()
     columns = column_list[table]
 
     cur = conn.cursor()
@@ -130,6 +141,7 @@ def get_ten_closest(table, lat, lon):
 
     features = [parse_row(row) for row in cur.fetchall()]
     cur.close()
+    conn.close()
     return {
         'type': 'FeatureCollection',
         'features': features
@@ -137,6 +149,7 @@ def get_ten_closest(table, lat, lon):
 
 
 def group_by_kommune(table):
+    conn = get_conn()
     cur = conn.cursor()
     sql = '''
         SELECT kommuner.navn, kommuner.komm, count(*) AS num, p.population as population
@@ -146,15 +159,16 @@ def group_by_kommune(table):
         GROUP BY kommuner.komm, kommuner.navn, population
         order by num DESC'''.format(table)
 
-    print sql
     cur.execute(sql)
 
     res = cur.fetchall()
     cur.close()
+    conn.close()
     return res
 
 
 def get_hex(table):
+    conn = get_conn()
     cur = conn.cursor()
     sql = '''
     SELECT
@@ -169,6 +183,7 @@ def get_hex(table):
 
     features = [parse_row(row) for row in cur.fetchall()]
     cur.close()
+    conn.close()
     return {
         'type': 'FeatureCollection',
         'features': features
