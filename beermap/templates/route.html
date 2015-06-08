@@ -75,9 +75,9 @@
             to.bindPopup(to.feature.properties[nameAttr]).openPopup();
 
             routing.getRoute(from.getLatLng(), to.getLatLng(), function (geoJson, directions) {
-                var r = L.geoJson(geoJson.features[0]).addTo(map);
+                var route = L.geoJson(geoJson.features[0]).addTo(map);
 
-                var properties = r.getLayers()[0].feature.properties;
+                var properties = route.getLayers()[0].feature.properties;
                 var data = {
                     distance: meterOrKm(properties.Total_Meters),
                     time: properties.Total_Minutes.toFixed(2),
@@ -88,8 +88,15 @@
                         };
                     })
                 };
-                info.setContent(dirTemplate(data));
-                map.fitBounds(r.getBounds());
+                var content = dirTemplate(data);
+                info.setContent(content);
+                map.fitBounds(route.getBounds(), {padding: [50, 50]});
+
+                route.on('click', function () {
+                    if (!info.isOpen()) {
+                        info.setContent(content);
+                    }
+                });
             });
         }());
     </script>

@@ -27,6 +27,10 @@ L.Control.Info = L.Control.extend({
         this._content.innerHTML = '';
     },
 
+    isOpen: function () {
+        return (this._container.style.display === 'block');
+    },
+
     setContent: function (content) {
         this._container.style.display = 'block';
         this._content.innerHTML = content;
